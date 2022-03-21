@@ -155,6 +155,7 @@ Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?
 
 ## ZIP, GZIP
 - Zip (.gz) a file ```gzip -k filename.txt```
+- Zip (.zip) all files in the current dir ```zip archiveName *``` or ```zip archiveName *.tsv```
 - Zip (.zip) a directory ```zip -r output.zip inputdir```
 - Unzip ```gzip -d file``` or ```gunzip file```
 - Extract a .tar.gz file with verbose ```tar -xvf archive.tar.gz```
