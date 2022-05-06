@@ -27,6 +27,18 @@ ver 1.0.1
 - Move several files to a dir ```mv file1.txt file2.txt dirname```
 - Delete dir with files ```rm -r``` or ask before delete ```rm -ri```
 
+## Conditions
+Compare:
+- ```gt``` - >
+- ```ge``` - >=
+```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```
+```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```
+```for ((i=1; i<=10; i++)); do echo "a"; done```
+
+## Math
+- Work with int ```let "var = $var + 5"```
+- Work with floats ```echo "$a*0.7" | bc```
+
 ## Running jobs
 - Run a job in the background ```sleep 50 &```
 - Check jobs in the background ```jobs```
