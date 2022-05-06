@@ -29,11 +29,12 @@ ver 1.0.1
 
 ## Conditions
 Compare:
-- ```gt``` - >
-- ```ge``` - >=
-```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```
-```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```
-```for ((i=1; i<=10; i++)); do echo "a"; done```
+- ```gt``` - greater than
+- ```ge``` - greater/equal to
+
+```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
+```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```   
+```for ((i=1; i<=10; i++)); do echo "a"; done```   
 
 ## Math
 - Work with int ```let "var = $var + 5"```
