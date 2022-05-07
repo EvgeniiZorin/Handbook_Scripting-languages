@@ -3,8 +3,9 @@ by VZEM
 > ver 2.0.0
 
 # Contents
+- [General info](#general_info)
 - [Conditional statements and loops](#Conditional_statements_and_loops)
-- 
+
 
 # General info
 - Change pw ```passwd```
