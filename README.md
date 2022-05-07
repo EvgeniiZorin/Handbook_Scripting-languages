@@ -2,6 +2,8 @@
 by VZEM
 > ver 2.0.0
 
+[![CC 4.0][cc-image]][cc-url]
+
 # Contents
 - [General info](#general-info)
 - [Variables](#Variables)
