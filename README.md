@@ -5,13 +5,27 @@ by VZEM
 # Contents
 - [General info](#general-info)
 - [Variables](#Variables)
+- [Regular expressions](#Regular-expressions)
 - [Conditional statements and loops](#Conditional-statements-and-loops)
 - [Main functions](#Main-functions)
   - [Math](#Math)
   - [AWK](#AWK)
+  - [CAT](#CAT)
+  - [CP](#CP)
+  - [CUT](#CUT)
+  - [GREP](#GREP)
+  - [LS](#LS)
+  - [RENAME](#RENAME)
+  - [SCREEN](#SCREEN)
+  - [SED](#SED)
+  - [SORT](#SORT)
+  - [UNIQ](#UNIQ)
+  - [WC](#WC)
+  - [XARGS](#XARGS)
+  - [ZIP](#ZIP)
+  - [GZIP](#GZIP)
 - [Bioinformatics commands](#Bioinformatics-commands)
 - [BASH scripting](#BASH-scripting)
-- 
 
 # General info
 - Change pw ```passwd```
@@ -34,6 +48,32 @@ by VZEM
 - Delete dir with files ```rm -r``` or ask before delete ```rm -ri```
 
 # Variables
+
+# Regular expressions
+Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?*+```
+
+| Command | Action                                                   |
+| :----------- | :------------------------------------------------------------ |
+| `$HOME`      | The current user's home directory.                            |
+| `$PATH`      | A colon-separated list of directories in which the shell looks for commands. |
+| `$PWD`       | The current working directory.                                |
+| `$RANDOM`    | Random integer between 0 and 32767.                           |
+| `$UID`       | The numeric, real user ID of the current user.                |
+| `$PS1`       | The primary prompt string.                                    |
+| `$PS2`       | The secondary prompt string.                                  |
+
+- Zero or more characters ```*```
+- Zero or one character ```?```
+- Any of the stated characters ```[abc]```
+- Any character NOT specified ```[^abc]```
+- Removes special meaning of a char ```\```
+- Logical OR operator ```|```
+- Char at the start of line ```^X```
+- Char at the end of line ```X$```
+- FOR loop ```{}```
+  - ```echo {a,b,c}.txt```
+  - ```echo {1..5}.txt```
+
 
 # Conditional statements and loops
 Compare:
@@ -109,20 +149,6 @@ Compare:
   - -t: sorted by time
   - -l: list of extended information
   - -h: human-readable
-
-## REGEXP
-Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?*+```
-- Zero or more characters ```*```
-- Zero or one character ```?```
-- Any of the stated characters ```[abc]```
-- Any character NOT specified ```[^abc]```
-- Removes special meaning of a char ```\```
-- Logical OR operator ```|```
-- Char at the start of line ```^X```
-- Char at the end of line ```X$```
-- FOR loop ```{}```
-  - ```echo {a,b,c}.txt```
-  - ```echo {1..5}.txt```
 
 ## RENAME
 - Flags: 
