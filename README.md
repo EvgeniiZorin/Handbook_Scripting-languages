@@ -52,6 +52,9 @@ by VZEM
 
 # Variables
 
+## Strings
+echo "Welcome, $1"
+
 # Regular expressions
 Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?*+```
 
