@@ -1,10 +1,12 @@
-ver 2.0.0
-
 # Bash handbook 
 by VZEM
 > ver 2.0.0
 
-## General info
+# Contents
+- [Conditional statements and loops](#conditional_statements_and_loops)
+- 
+
+# General info
 - Change pw ```passwd```
 - Print current date ```date```
 - Print history ```history```
@@ -24,7 +26,7 @@ by VZEM
 - Move several files to a dir ```mv file1.txt file2.txt dirname```
 - Delete dir with files ```rm -r``` or ask before delete ```rm -ri```
 
-## Conditions
+# Conditional statements and loops
 Compare:
 - ```gt``` - greater than
 - ```ge``` - greater/equal to
