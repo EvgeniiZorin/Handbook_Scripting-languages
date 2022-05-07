@@ -4,8 +4,14 @@ by VZEM
 
 # Contents
 - [General info](#general-info)
+- [Variables](#Variables)
 - [Conditional statements and loops](#Conditional-statements-and-loops)
-
+- [Main functions](#Main-functions)
+  - [Math](#Math)
+  - [AWK](#AWK)
+- [Bioinformatics commands](#Bioinformatics-commands)
+- [BASH scripting](#BASH-scripting)
+- 
 
 # General info
 - Change pw ```passwd```
@@ -27,6 +33,8 @@ by VZEM
 - Move several files to a dir ```mv file1.txt file2.txt dirname```
 - Delete dir with files ```rm -r``` or ask before delete ```rm -ri```
 
+# Variables
+
 # Conditional statements and loops
 Compare:
 - ```gt``` - greater than
@@ -35,6 +43,8 @@ Compare:
 ```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
 ```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```   
 ```for ((i=1; i<=10; i++)); do echo "a"; done```   
+
+# Main functions
 
 ## Math
 - Work with int ```let "var = $var + 5"```
@@ -182,7 +192,7 @@ Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?
   - Push bash script to queue ```sbatch script.sh```
   - Check queue ```squeue```
 
-# Bioinformatics-specific commands
+# Bioinformatics commands
 - Take VCF file and output the most commonly-encountered REF nucleotide ```sed '/##/d' input.vcf | awk '{print $1, $4}' | grep "^15" | awk '{print$2}' | grep -w "[A-Z]" | sort | uniq -c | sort -r | head -1```
 - Convert Fastq to Fasta ```cat input.fastq | paste - - - - | sed 's/^@/>/g' | cut -f1-2 | tr '\t' '\n'``` or ```sed -n '1~4s/^@/>/p;2~4p' input.fastq > output.fasta```
 - Download multiple .fasta files from the uniprot website by their ID given in a text file ```for i in $(cat fasta_list.txt | tr -d '\r'); do wget "https://www.uniprot.org/uniprot/$i.fasta"; done```
