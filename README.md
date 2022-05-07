@@ -54,26 +54,19 @@ Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?
 
 | Command | Action |
 | :----------- | :------------------------------------------------------------ |
-| ```$HOME```      | The current user's home directory.                            |
-| `$PATH`      | A colon-separated list of directories in which the shell looks for commands. |
-| `$PWD`       | The current working directory.                                |
-| `$RANDOM`    | Random integer between 0 and 32767.                           |
-| `$UID`       | The numeric, real user ID of the current user.                |
-| `$PS1`       | The primary prompt string.                                    |
-| `$PS2`       | The secondary prompt string.                                  |
+| `*` | Zero or more characters. |
+| `?` | Zero or one character. |
+| `[abc]` | Any of the stated characters. |
+| `[^abc]` | Any character NOT specified. |
+| `\` | Removes special meaning of a character. |
+| `|` | Logical OR operator. |
+| `^X` | Character at the line start. |
+| `X$` | Character at the line end. |
+| `{}` | FOR loop. |
 
-- Zero or more characters ```*```
-- Zero or more characters `*`
-- Zero or one character ```?```
-- Any of the stated characters ```[abc]```
-- Any character NOT specified ```[^abc]```
-- Removes special meaning of a char ```\```
-- Logical OR operator ```|```
-- Char at the start of line ```^X```
-- Char at the end of line ```X$```
-- FOR loop ```{}```
-  - ```echo {a,b,c}.txt```
-  - ```echo {1..5}.txt```
+Example: 
+- Print all these files: `echo {a,b,c}.txt` or `echo {1..5}.txt`
+
 
 
 # Conditional statements and loops
