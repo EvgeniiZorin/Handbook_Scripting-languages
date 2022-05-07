@@ -1,11 +1,8 @@
-ver 1.0.1
-# Projects description
+ver 2.0.0
 
-- **Generate_randomsort_datasets_with_fractions.sh**: bash script which takes a .txt file with N lines, then generates 10 files with randomly sorted lines from the original file (except for header, which is assumed to be the first line and stays on top) + for each of the 10 files, generates differently-sized fractions of sizes (N-1)\*0.1 for 10%, (N-1)\*0.2 for 20%, and so forth up to 100% (unchanged, randomly-sorted file). 
-- Project 2
-- Project 3
-
-# Most useful BASH commands
+# Bash handbook 
+by VZEM
+> ver 2.0.0
 
 ## General info
 - Change pw ```passwd```
