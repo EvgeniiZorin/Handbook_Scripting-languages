@@ -63,6 +63,7 @@ Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?
 | `$PS2`       | The secondary prompt string.                                  |
 
 - Zero or more characters ```*```
+- Zero or more characters `*`
 - Zero or one character ```?```
 - Any of the stated characters ```[abc]```
 - Any character NOT specified ```[^abc]```
