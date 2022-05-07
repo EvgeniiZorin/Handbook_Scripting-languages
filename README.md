@@ -52,9 +52,9 @@ by VZEM
 # Regular expressions
 Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?*+```
 
-| Command | Action                                                   |
+| Command | Action |
 | :----------- | :------------------------------------------------------------ |
-| `$HOME`      | The current user's home directory.                            |
+| ```$HOME```      | The current user's home directory.                            |
 | `$PATH`      | A colon-separated list of directories in which the shell looks for commands. |
 | `$PWD`       | The current working directory.                                |
 | `$RANDOM`    | Random integer between 0 and 32767.                           |
