@@ -55,7 +55,7 @@ by VZEM
 ## Strings
 echo "Welcome, $1"
 
-Concatenate string: `echo $a$b`
+Concatenate string: `echo $a$b`   
 In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\n\r"`
 
 # Regular expressions
@@ -144,6 +144,7 @@ Compare:
   - -nC 1: prints 1 line before and after the matching line
   - -r: recursive search, case-sensitive
   - -E: **allows to use extended regexp**
+  - -o: matches more than once per each line
 
 ## LS
 - Flags:
@@ -185,6 +186,9 @@ Compare:
   - -V: sort alphanumerically - numbers, then letters
   - -r: reverse sort
   - -n: numerical sort (10, then 100)
+
+## TR
+- Trim delete newlines ```tr -d '\n\r'```
 
 ## UNIQ
 - Remove replciates from sorted data, leaving only unique values ```uniq```
