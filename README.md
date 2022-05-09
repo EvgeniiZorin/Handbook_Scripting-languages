@@ -10,8 +10,8 @@ by VZEM
 - [Variables](#Variables)
 - [Regular expressions](#Regular-expressions)
 - [Conditional statements and loops](#Conditional-statements-and-loops)
+- [Math](#Math)
 - [Main functions](#Main-functions)
-  - [Math](#Math)
   - [AWK](#AWK)
   - [CAT](#CAT)
   - [CP](#CP)
@@ -84,11 +84,12 @@ Compare:
 ```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```   
 ```for ((i=1; i<=10; i++)); do echo "a"; done```   
 
-# Main functions
+# Math
 
-## Math
 - Work with int ```let "var = $var + 5"```
 - Work with floats ```echo "$a*0.7" | bc```
+
+# Main functions
 
 ## Running jobs
 - Run a job in the background ```sleep 50 &```
