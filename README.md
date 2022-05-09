@@ -11,6 +11,7 @@ by VZEM
 - [Regular expressions](#Regular-expressions)
 - [Conditional statements and loops](#Conditional-statements-and-loops)
 - [Math](#Math)
+- [Function definition](#Function-definition)
 - [Main functions](#Main-functions)
   - [AWK](#AWK)
   - [CAT](#CAT)
@@ -22,6 +23,7 @@ by VZEM
   - [SCREEN](#SCREEN)
   - [SED](#SED)
   - [SORT](#SORT)
+  - [TR](#TR)
   - [UNIQ](#UNIQ)
   - [WC](#WC)
   - [XARGS](#XARGS)
@@ -91,6 +93,16 @@ Compare:
 
 - Work with int ```let "var = $var + 5"```
 - Work with floats ```echo "$a*0.7" | bc```
+
+# Function definition
+
+Here is an example:    
+```
+function functName {
+  echo "Hello world!"
+ }
+ functName
+```
 
 # Main functions
 
