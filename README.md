@@ -55,6 +55,9 @@ by VZEM
 ## Strings
 echo "Welcome, $1"
 
+Concatenate string: `echo $a$b`
+In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\n\r"`
+
 # Regular expressions
 Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?*+```
 
