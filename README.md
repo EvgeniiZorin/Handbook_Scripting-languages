@@ -88,6 +88,13 @@ Compare:
 ```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
 ```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```   
 ```for ((i=1; i<=10; i++)); do echo "a"; done```   
+```for i in {1..100}; do echo 'a'; done```
+
+Print the same character N times: 
+```
+b=10; 
+for i in $(seq 1 $b); do echo -n 'a'; done; echo '' 
+```
 
 # Math
 
@@ -142,6 +149,13 @@ function functName {
 - Print column 7  ```cut -f 7 input.txt``` 
 - Print columns 1, 2  ```cut -f 1,2 input.txt``` or ```cut -f 1-2 input.txt``` 
 - Print column 3 and up  ```cut -f 3- input.txt```
+
+## ECHO
+Flags:   
+| Flag | Action |
+| :--- | :--- |
+| `-n` | Do not output the trailing newline. |
+
 
 ## GREP
 - Print lines containing one letter within A-Z ```grep -w "[A-Z]" input.txt```
