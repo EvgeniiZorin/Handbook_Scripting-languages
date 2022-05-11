@@ -9,7 +9,8 @@ by VZEM
 - [General info](#general-info)
 - [Variables](#Variables)
 - [Regular expressions](#Regular-expressions)
-- [Conditional statements and loops](#Conditional-statements-and-loops)
+- [FOR loop](#FOR-loop)
+- [Conditional statements](#Conditional-statements)
 - [Math](#Math)
 - [Function definition](#Function-definition)
 - [Main functions](#Main-functions)
@@ -17,6 +18,7 @@ by VZEM
   - [CAT](#CAT)
   - [CP](#CP)
   - [CUT](#CUT)
+  - [ECHO](#ECHO)
   - [GREP](#GREP)
   - [LS](#LS)
   - [RENAME](#RENAME)
@@ -80,14 +82,13 @@ Example:
 
 
 
-# Conditional statements and loops
-Compare:
-- ```gt``` - greater than
-- ```ge``` - greater/equal to
+# FOR loop
 
-```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
-```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```   
-```for ((i=1; i<=10; i++)); do echo "a"; done```   
+## Var 1
+```
+for ((i=1; i<=10; i++)); do echo "a"; done
+```
+## Var2
 ```for i in {1..100}; do echo 'a'; done```
 
 Print the same character N times: 
@@ -95,6 +96,16 @@ Print the same character N times:
 b=10; 
 for i in $(seq 1 $b); do echo -n 'a'; done; echo '' 
 ```
+
+
+# Conditional statements
+Compare:
+- ```gt``` - greater than
+- ```ge``` - greater/equal to
+
+```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
+```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```     
+
 
 # Math
 
