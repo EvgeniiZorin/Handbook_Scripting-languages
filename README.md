@@ -105,10 +105,22 @@ for i in $(seq 1 $b); do echo -n 'a'; done; echo ''
 
 ## IF
 
+| Operator | Description |
+| :--- | :--- |
+| `-gt` | Greater than |
+| `-ge` | Greater or equal to |
+| `-eq` | Equal to |
+| `-le` | Less or equal to |
+| `-lt` | Less than |
+| `==` | Check if two strings are the same |
+| `!=` | Check if two strings are NOT the same |
+| `-d` | Check the existence of a directory |
+| `-e` | Check the existence of a file |
+
 ```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
-```if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi```    
-- ```gt``` - greater than
-- ```ge``` - greater/equal to
+```if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi```     
+Check if directory exists: `if [ -d "Dirname" ]; then echo "Exists!"; fi`   
+Create directory if it doesn't exist: `if [ ! -d "Dirname" ]; then mkdir Dirname; fi`   
 
 ```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```     
 
