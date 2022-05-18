@@ -90,7 +90,8 @@ for ((i=1; i<=10; i++)); do echo "a"; done
 ```
 ## Var2
 ```
-for i in {1..100}; do echo 'a'; done
+for i in {1..20}; do echo "Count: $i"; done
+
 ```
 
 Print the same character N times: 
