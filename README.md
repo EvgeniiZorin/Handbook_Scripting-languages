@@ -102,14 +102,18 @@ for i in $(seq 1 $b); do echo -n 'a'; done; echo ''
 
 
 # Conditional statements
-Compare:
-- ```gt``` - greater than
-- ```ge``` - greater/equal to
+
+## IF
 
 ```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
 ```if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi```    
+- ```gt``` - greater than
+- ```ge``` - greater/equal to
 
 ```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```     
+
+## WHILE 
+```x=1; while [ $x -le 5 ]; do echo "Welcome $x times"; x=$(( $x + 1 )); done```
 
 
 # Math
