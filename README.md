@@ -107,6 +107,7 @@ Compare:
 - ```ge``` - greater/equal to
 
 ```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
+```if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi```
 ```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```     
 
 
