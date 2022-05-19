@@ -133,6 +133,8 @@ Create directory if it doesn't exist: `if [ ! -d "Dirname" ]; then mkdir Dirname
 - Work with int ```let "var = $var + 5"```
 - Work with floats ```echo "$a*0.7" | bc```
 
+`echo $(( a * b ))`
+
 # Function definition
 
 Here is an example:    
