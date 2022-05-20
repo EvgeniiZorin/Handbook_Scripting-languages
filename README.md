@@ -59,6 +59,10 @@ by VZEM
 ## Strings
 echo "Welcome, $1"
 
+Slice strings: 
+- `echo '((string))' | awk '{print substr($0, 3, length($0) - 4)}'`
+- `v1='((string))'; echo "${v1:2:-2}"`
+
 Concatenate string: `echo $a$b`   
 In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\n\r"`
 
