@@ -235,6 +235,7 @@ Flags:
 ## SED
 - Print line 2 ```sed -n 2p file.txt```
 - Remove line 7 inplace ```sed -ie '7d' file.txt``` or ```sed -i '7d' file.txt```
+- Remove spaces in a string ```sed 's/ //g'```
 - Replace all occurrences of str1 with str2 ```sed 's/str1/str2/g' file.txt```
 - Replace delim '\t' with ';' ```sed 's/\t/;/g' file.txt```
 
