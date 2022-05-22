@@ -136,6 +136,8 @@ Create directory if it doesn't exist: `if [ ! -d "Dirname" ]; then mkdir Dirname
 
 - Work with int ```let "var = $var + 5"```
 - Work with floats ```echo "$a*0.7" | bc```
+- Modulo - give the division remainder: `%`
+- Check if $factor is factor of $base: `if (($base%$factor == 0)); then echo "true"; else echo "false"; fi`
 
 `echo $(( a * b ))`
 
