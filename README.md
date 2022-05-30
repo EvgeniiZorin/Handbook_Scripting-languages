@@ -195,6 +195,7 @@ Flags:
 | Flag | Action |
 | :--- | :--- |
 | `-n` | Do not output the trailing newline. |
+| `for i in {1..75}; do echo -n "-"; done` | Print header line in Linux |
 
 
 ## GREP
