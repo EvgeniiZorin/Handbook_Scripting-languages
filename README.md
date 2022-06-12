@@ -18,7 +18,7 @@ by VZEM
   - [CAT](#CAT)
   - [CP](#CP)
   - [CUT](#CUT)
-  - [ECHO/PRINTF](#ECHO/PRINTF)
+  - [ECHO_PRINTF](#ECHO_PRINTF)
   - [GREP](#GREP)
   - [LS](#LS)
   - [RENAME](#RENAME)
@@ -190,7 +190,7 @@ function functName {
 - Print columns 1, 2  ```cut -f 1,2 input.txt``` or ```cut -f 1-2 input.txt``` 
 - Print column 3 and up  ```cut -f 3- input.txt```
 
-## ECHO/PRINTF
+## ECHO_PRINTF
 Flags:   
 | Flag | Action |
 | :--- | :--- |
