@@ -88,11 +88,15 @@ Example:
 
 # FOR loop
 
-## Var 1
+Var 1
 ```
 for ((i=1; i<=10; i++)); do echo "a"; done
 ```
-## Var2
+Var2
+```bash
+for i in {START..STOP..STEP}; do echo $i; done
+```
+
 ```
 for i in {1..20}; do echo "Count: $i"; done
 
