@@ -56,6 +56,8 @@ by VZEM
 
 # Variables
 
+Give default value to a variable if a value not assigned: `VAR1="${1:-you}" `
+
 ## Strings
 echo "Welcome, $1"
 
