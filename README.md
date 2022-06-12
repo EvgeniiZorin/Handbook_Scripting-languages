@@ -89,7 +89,7 @@ Example:
 # FOR loop
 
 Var 1
-```
+```bash
 for ((i=1; i<=10; i++)); do echo "a"; done
 ```
 Var2
@@ -97,13 +97,8 @@ Var2
 for i in {START..STOP..STEP}; do echo $i; done
 ```
 
-```
-for i in {1..20}; do echo "Count: $i"; done
-
-```
-
 Print the same character N times: 
-```
+```bash
 b=10; 
 for i in $(seq 1 $b); do echo -n 'a'; done; echo '' 
 ```
