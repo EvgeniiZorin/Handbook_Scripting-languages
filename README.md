@@ -18,7 +18,7 @@ by VZEM
   - [CAT](#CAT)
   - [CP](#CP)
   - [CUT](#CUT)
-  - [ECHO](#ECHO)
+  - [ECHO / PRINTF](#ECHO-/-PRINTF)
   - [GREP](#GREP)
   - [LS](#LS)
   - [RENAME](#RENAME)
@@ -190,13 +190,14 @@ function functName {
 - Print columns 1, 2  ```cut -f 1,2 input.txt``` or ```cut -f 1-2 input.txt``` 
 - Print column 3 and up  ```cut -f 3- input.txt```
 
-## ECHO
+## ECHO / PRINTF
 Flags:   
 | Flag | Action |
 | :--- | :--- |
 | `-n` | Do not output the trailing newline. |
 | `for i in {1..75}; do echo -n "-"; done` | Print header line in Linux |
 
+PRINTF: echo but without newline. 
 
 ## GREP
 - Print lines containing one letter within A-Z ```grep -w "[A-Z]" input.txt```
