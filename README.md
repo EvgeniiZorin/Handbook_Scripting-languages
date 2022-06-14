@@ -8,6 +8,7 @@ by VZEM
 # Contents
 - [General info](#general-info)
 - [Variables](#Variables)
+- [Date and time](#Date-and-time)
 - [Regular expressions](#Regular-expressions)
 - [FOR loop](#FOR-loop)
 - [Conditional statements](#Conditional-statements)
@@ -57,6 +58,7 @@ by VZEM
 
 # Variables
 
+Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
 Give default value to a variable if a value not assigned: `VAR1="${1:-you}" `
 
 ## Strings
@@ -68,6 +70,15 @@ Slice strings:
 
 Concatenate string: `echo $a$b`   
 In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\n\r"`
+
+# Date and time
+```bash
+start_time=$SECONDS # Get current time in seconds
+elapsed=$(( SECONDS - start_time )) # How many seconds have passed
+
+now=$(date +"%T") # Get current time HH:MM:SS
+```
+
 
 # Regular expressions
 Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?*+```
