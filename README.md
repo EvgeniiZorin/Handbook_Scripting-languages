@@ -58,6 +58,12 @@ by VZEM
 
 # Variables
 
+```bash
+a="Hello"
+b=22
+c="${a}, I am ${b} years old!"
+```
+Print number of variables passed `$#`
 Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
 Give default value to a variable if a value not assigned: `VAR1="${1:-you}" `
 
