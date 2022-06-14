@@ -2,7 +2,7 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 by VZEM
-> ver 2.0.0
+> ver 2.0.2
 
 
 # Contents
