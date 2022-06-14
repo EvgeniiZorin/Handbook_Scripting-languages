@@ -24,6 +24,7 @@ by VZEM
   - [RENAME](#RENAME)
   - [SCREEN](#SCREEN)
   - [SED](#SED)
+  - [SHUF](#SHUF)
   - [SORT](#SORT)
   - [TR](#TR)
   - [UNIQ](#UNIQ)
@@ -247,6 +248,9 @@ PRINTF: echo but without newline.
 - Remove spaces in a string ```echo $1 | sed 's/ //g'```
 - Replace all occurrences of str1 with str2 ```sed 's/str1/str2/g' file.txt```
 - Replace delim '\t' with ';' ```sed 's/\t/;/g' file.txt```
+
+## SHUF
+- Get N random lines `shuf -n N input >output`
 
 ## SORT
 - Randomly shuffle 10 non-repeating sample items ```shuf -n 10 input.txt``` or ```sort --random-sort input.txt```
