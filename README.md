@@ -20,6 +20,7 @@
 - [Main functions](#Main-functions)
   - [AWK](#AWK)
   - [CAT](#CAT)
+  - [CD](#CD)
   - [CP](#CP)
   - [CUT](#CUT)
   - [ECHO_PRINTF](#ECHO_PRINTF)
@@ -201,6 +202,12 @@ function functName {
 ## CAT
 - Concatenate several files into one ```cat file1 file2 > file3```
 - Concatenate all .tsv files in the current dir into one ```cat *.tsv >> output.tsv```
+
+## CD
+
+```bash
+cd /mnt/c/Users/evgen/Desktop # In WSL, make Desktop your workdir
+```
 
 ## CP
 - Copy multiple files to a dir ```cp {file1,file2,file3}.txt dir```
