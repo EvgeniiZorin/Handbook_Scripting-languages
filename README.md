@@ -48,7 +48,6 @@
 - Check how many resources we have ```df -h```
 - See info about the file ```file file.txt```
 - See where the program is installed ```which fastqc```
-- Show manual for the command ```man pwd``` or a short explanation ```whatis pwd```
 - Gen full path of a file ```readlink -f file.txt```
 - Print files in the current dir ```for i in $(ls); do echo $i; done```
 - Print .txt files in the current dir ```for i in *.txt; do echo $i; done```
@@ -57,7 +56,7 @@
 
 | Command | Action |
 | --- | --- |
-| `<cmd> --help`, `man <cmd>`, `help <cmd>` | Get help for a command <cmd> |
+| `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command <cmd> |
 
 **File management**:
 - Create nested dirs ```mkdir -p```
@@ -156,7 +155,7 @@ for i in $(seq 1 $b); do echo -n 'a'; done; echo ''
 ```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
 ```if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi```     
 Check if directory exists: `if [ -d "Dirname" ]; then echo "Exists!"; fi`   
-Create directory if it doesn't exist: `if [ ! -d "Dirname" ]; then mkdir Dirname; fi`   
+Create directory if it does not exist: `if [ ! -d "Dirname" ]; then mkdir Dirname; fi`   
 
 ```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```     
 
@@ -229,9 +228,11 @@ cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
 - Print column 3 and up  ```cut -f 3- input.txt```
 
 ## ECHO_PRINTF
-Flags:   
+
+Flags for ECHO:   
 | Flag | Action |
 | :--- | :--- |
+| `-e` | Interpret newlines, e.g. `echo -e "\ntext\n"` |
 | `-n` | Do not output the trailing newline. |
 | `for i in {1..75}; do echo -n "-"; done` | Print header line in Linux |
 
