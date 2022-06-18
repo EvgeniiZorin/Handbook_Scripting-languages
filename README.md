@@ -1,6 +1,6 @@
 # Bash handbook 
 
-*Ver 2.0.3*
+*Ver 2.1.0*
 
 > This is a practical handbook about the basic functions and concepts in BASH that I wrote for my own reference in case I forget a certain BASH function. If you stumble upon this handbook and find it useful, the pleasure is mine :)    
 > .   
