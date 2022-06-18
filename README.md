@@ -206,7 +206,7 @@ function functName {
 ## CD
 
 ```bash
-cd /mnt/c/Users/evgen/Desktop # In WSL, make Desktop your workdir
+cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
 ```
 
 ## CP
