@@ -10,6 +10,7 @@
 
 # Contents
 - [General info](#general-info)
+- [chmod](#chmod)
 - [Variables](#Variables)
 - [Date and time](#Date-and-time)
 - [Regular expressions](#Regular-expressions)
@@ -53,15 +54,27 @@
 - Print .txt files in the current dir ```for i in *.txt; do echo $i; done```
 - Print difference btw two files, or print nothing if equal ```diff file1.txt file2.txt``` add flag -u for a more readable output
 - Clear the screen w/o deleting the scroll history ```clear -x``` or shortcut in Win ```ctrl + L```
+- Check exit status of the last cmd `echo $?`. Zero errors is 0, doesn't exist or False is 1. 
+
+```bash
+: '
+command out
+multiple lines
+'
+```
 
 | Command | Action |
 | --- | --- |
-| `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command <cmd> |
+| `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command `<cmd>` |
 
 **File management**:
 - Create nested dirs ```mkdir -p```
 - Move several files to a dir ```mv file1.txt file2.txt dirname```
 - Delete dir with files ```rm -r``` or ask before delete ```rm -ri```
+
+# chmod
+
+Give permission to run an executable `chmod +x <filename>`
 
 # Variables
 
@@ -140,17 +153,24 @@ for i in $(seq 1 $b); do echo -n 'a'; done; echo ''
 
 ## IF
 
+```bash
+if [[ condition ]]; then STATEMENT; fi
+```
+
 | Operator | Description |
 | :--- | :--- |
-| `-gt` | Greater than |
+| `-gt` | Greater than **(arithmetic operators)** |
 | `-ge` | Greater or equal to |
 | `-eq` | Equal to |
+| `-ne` | Not equal to |
 | `-le` | Less or equal to |
 | `-lt` | Less than |
-| `==` | Check if two strings are the same |
+| `==` | Check if two strings are the same **(string operators)** |
 | `!=` | Check if two strings are NOT the same |
-| `-d` | Check the existence of a directory |
+| `-d` | Check the existence of a directory **(file operators)** |
 | `-e` | Check the existence of a file |
+| `&&` | AND **(Comparison operators)** |
+| `||` | OR |
 
 ```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
 ```if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi```     
@@ -347,6 +367,8 @@ PRINTF: echo but without newline.
 # BASH scripting
 
 Shebang: `#!/bin/bash`
+  
+Print all arguments passed to the scriplt `$*`
 
 - Concatenate a string: ```var1="I really enjoy"; var1+="programming"``` or ```var1="I really"; var2=" prog"; var3="${var1} enjoy ${var2}"```
 - Debug script: 
