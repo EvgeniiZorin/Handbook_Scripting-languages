@@ -1,9 +1,12 @@
 # Bash handbook 
+
+*Ver 2.0.3*
+
+> This is a practical handbook about the basic functions and concepts in BASH that I wrote for my own reference in case I forget a certain BASH function. If you stumble upon this handbook and find it useful, the pleasure is mine :)    
+> .   
+> > Evgenii Zorin
+
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-
-by VZEM
-> ver 2.0.2
-
 
 # Contents
 - [General info](#general-info)
