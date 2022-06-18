@@ -55,6 +55,10 @@
 - Print difference btw two files, or print nothing if equal ```diff file1.txt file2.txt``` add flag -u for a more readable output
 - Clear the screen w/o deleting the scroll history ```clear -x``` or shortcut in Win ```ctrl + L```
 
+| Command | Action |
+| --- | --- |
+| `asdf` | asdf |
+
 **File management**:
 - Create nested dirs ```mkdir -p```
 - Move several files to a dir ```mv file1.txt file2.txt dirname```
@@ -63,9 +67,12 @@
 # Variables
 
 ```bash
-a="Hello"
-b=22
-c="${a}, I am ${b} years old!"
+# Assign variables:
+a="Hello"; b=22; c="${a}, I am ${b} years old!"
+# Read user input
+read VARNAME
+# Use a variable
+echo $a
 ```
 - Print number of variables passed `$#`    
 - Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
@@ -86,7 +93,9 @@ In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\
 start_time=$SECONDS # Get current time in seconds
 elapsed=$(( SECONDS - start_time )) # How many seconds have passed
 
-now=$(date +"%T") # Get current time HH:MM:SS
+now=$(date +"%T") # Get current time HH:MM:SS ## NOTE! no space before "%T"
+now=$(date +"%r") # HH:MM:SS PM
+now=$(date +"%I:%M:%S") # HH:MM:SS (12-hour based)
 ```
 
 
@@ -335,6 +344,9 @@ PRINTF: echo but without newline.
   - Note: the script removes the cryptic newline '\r' from the end of each line
 
 # BASH scripting
+
+Shebang: `#!/bin/bash`
+
 - Concatenate a string: ```var1="I really enjoy"; var1+="programming"``` or ```var1="I really"; var2=" prog"; var3="${var1} enjoy ${var2}"```
 - Debug script: 
   - Debug ```set -x```
