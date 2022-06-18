@@ -57,7 +57,7 @@
 
 | Command | Action |
 | --- | --- |
-| `asdf` | asdf |
+| `<cmd> --help`, `man <cmd>`, `help <cmd>` | Get help for a command <cmd> |
 
 **File management**:
 - Create nested dirs ```mkdir -p```
