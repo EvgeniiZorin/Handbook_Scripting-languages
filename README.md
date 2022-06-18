@@ -36,8 +36,7 @@
   - [UNIQ](#UNIQ)
   - [WC](#WC)
   - [XARGS](#XARGS)
-  - [ZIP](#ZIP)
-  - [GZIP](#GZIP)
+  - [ZIP,GZIP](#ZIP,GZIP)
 - [Bioinformatics commands](#Bioinformatics-commands)
 - [BASH scripting](#BASH-scripting)
 
@@ -346,7 +345,7 @@ PRINTF: echo but without newline.
 - Use output of file.txt as args in function 'rm' ```cat file.txt | xargs rm```
 - ```find . -size +1M | xargs ls -lh```
 
-## ZIP, GZIP
+## ZIP,GZIP
 - Zip (.gz) a file ```gzip -k filename.txt```
 - Zip (.zip) all files in the current dir ```zip archiveName *``` or ```zip archiveName *.tsv```
 - Zip (.zip) a directory ```zip -r output.zip inputdir```
