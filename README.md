@@ -180,6 +180,11 @@ Create directory if it does not exist: `if [ ! -d "Dirname" ]; then mkdir Dirnam
 ```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```     
 
 ## WHILE 
+
+```bash
+while [[ CONDITION ]]; do STATEMENTS; done
+```
+
 ```x=1; while [ $x -le 5 ]; do echo "Welcome $x times"; x=$(( $x + 1 )); done```
 
 
