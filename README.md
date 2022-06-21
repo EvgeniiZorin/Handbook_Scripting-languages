@@ -166,6 +166,8 @@ if [[ condition ]]; then STATEMENT; fi
 | `-lt` | Less than |
 | `==` | Check if two strings are the same **(string operators)** |
 | `!=` | Check if two strings are NOT the same |
+| `-z` | True if length of the string is zero; `[[ -z $VAR ]]` |
+| `-n` | True if length of the string is non-zero |
 | `-d` | Check the existence of a directory **(file operators)** |
 | `-e` | Check the existence of a file |
 | `&&` | AND **(Comparison operators)** |
