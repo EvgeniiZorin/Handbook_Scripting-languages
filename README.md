@@ -18,6 +18,7 @@
 - [Conditional statements](#Conditional-statements)
 - [Math](#Math)
 - [Function definition](#Function-definition)
+- [File handling](#File-handling)
 - [Main functions](#Main-functions)
   - [AWK](#AWK)
   - [CAT](#CAT)
@@ -208,6 +209,24 @@ function functName {
   echo "Hello world!"
  }
  functName
+```
+
+# File handling
+
+Let's say you have a `file.csv` file:
+```csv
+name,surname
+John,Doe
+Jane,Doe
+Chris,Evans
+```
+
+Iterate row-by-row, printing one column only
+```sh
+cat file.csv | while IFS="," read NAME SURNAME
+do
+  echo SURNAME
+done
 ```
 
 # Main functions
