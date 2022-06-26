@@ -13,7 +13,7 @@
 - [chmod](#chmod)
 - [Variables](#Variables)
   - [String](#String)
-  - [List](#List)
+  - [Array](#Array)
 - [Date and time](#Date-and-time)
 - [Regular expressions](#Regular-expressions)
 - [FOR loop](#FOR-loop)
@@ -83,11 +83,15 @@ Give permission to run an executable `chmod +x <filename>`
 
 ```bash
 # Assign variables:
-a="Hello"; b=22; c="${a}, I am ${b} years old!"
+a="Hello"; b=22; c="${a}, I am ${b} years old!"; 
+d=$(( b - 6 )) # Assign expression to a variable
 # Read user input
 read VARNAME
 # Use a variable
 echo $a
+
+# Check variables and their values
+declare -p VARNAME
 ```
 - Print number of variables passed `$#`    
 - Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
@@ -103,17 +107,22 @@ Slice strings:
 Concatenate string: `echo $a$b`   
 In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\n\r"`
 
-## List
+## Array
 
 ```bash
-list1=("item1" "item2" "item3")
-list1=(
+arr1=("a" "b" "c")
+
+arr1=(
   "item1"
   "item2"
 )
 
-# Access a list's item
-echo ${list1[0]}
+# Access a list's item by its index
+echo ${arr1[0]}
+
+# Print the whole array
+echo ${arr1[@]} # or...
+echo ${arr1[*]}
 ```
 
 # Date and time
@@ -146,6 +155,7 @@ Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?
 | :----------- | :------------------------------------------------------------ |
 | `*` | Zero or more characters. |
 | `?` | Zero or one character. |
+| `.` | One occurrence of a character. |
 | `[abc]` | Any of the stated characters. |
 | `[^abc]` | Any character NOT specified. |
 | `\` | Removes special meaning of a character. |
@@ -153,10 +163,14 @@ Meta characters which need to be escaped with a backslash ```\``` : ```.[{(\^$|?
 | `^X` | Character at the line start. |
 | `X$` | Character at the line end. |
 | `{}` | FOR loop. |
+| `[[ hello =~ el ]]` | pattern matching: does "hello" contain "el"? |
+| `+` | any number of character to the left of "+" |
+
 
 Example: 
 - Print all these files: `echo {a,b,c}.txt` or `echo {1..5}.txt`
-
+- Expression start with "h", has at least one character after it, and ends with "d": `^h.+d$`
+- Check if variable var1 ends with "?": `[[ $var1 =~ \?$ ]]`
 
 
 # FOR loop
@@ -182,7 +196,11 @@ for i in $(seq 1 $b); do echo -n 'a'; done; echo ''
 ## IF
 
 ```bash
+# Version 1 (use $ sign to denote variables):
 if [[ condition ]]; then STATEMENT; fi
+if [[ condition ]]; then STATEMENT1; elif [[ condition2 ]]; then STATEMENT2; else STATEMENT3; fi
+# Version 2 (don't use $ sign to denote variables):
+if (( condition )); 
 ```
 
 | Operator | Description |
@@ -206,8 +224,7 @@ if [[ condition ]]; then STATEMENT; fi
 ```if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi```     
 Check if directory exists: `if [ -d "Dirname" ]; then echo "Exists!"; fi`   
 Create directory if it does not exist: `if [ ! -d "Dirname" ]; then mkdir Dirname; fi`   
-
-```if [[ condition ]]; then echo "a"; elif [[ condition2 ]]; then echo "b"; else echo "c"; fi```     
+    
 
 ## WHILE 
 
@@ -216,6 +233,12 @@ while [[ CONDITION ]]; do STATEMENTS; done
 ```
 
 ```x=1; while [ $x -le 5 ]; do echo "Welcome $x times"; x=$(( $x + 1 )); done```
+
+## UNTIL
+
+```bash
+until [[ condition ]]; do STATEMENT; done
+```
 
 
 # Math
@@ -234,6 +257,11 @@ Here is an example:
 function functName {
   echo "Hello world!"
  }
+ # or
+ functname() {
+ ...
+ }
+ 
  functName
 ```
 
@@ -345,9 +373,12 @@ PRINTF: echo but without newline.
 
 ## RANDOM
 
-Internal BASH function, returns a pseudorandom integer in the range 0 - 32767.
+Internal BASH function (or a BASH environment variable), returns a pseudorandom integer in the range 0 - 32767.
 
-`N=$(( RANDOM % 4 ))` # Generate random integer from 0 to 3 inclusive. 
+`echo $(( RANDOM % 4 ))` # Generate a random integer from 0 to 3 inclusive. 
+`echo $(( RANDOM % 4 + 1 ))` # Genearte a random integer from 1 to 3 inclusive
+
+`N=$(( RANDOM % 4 ))` 
 
 ## RENAME
 - Flags: 
