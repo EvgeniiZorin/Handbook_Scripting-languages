@@ -12,6 +12,8 @@
 - [General info](#general-info)
 - [chmod](#chmod)
 - [Variables](#Variables)
+  - [String](#String)
+  - [List](#List)
 - [Date and time](#Date-and-time)
 - [Regular expressions](#Regular-expressions)
 - [FOR loop](#FOR-loop)
@@ -90,7 +92,7 @@ echo $a
 - Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
 - Give default value to a variable if a value not assigned: `VAR1="${1:-you}" `
 
-## Strings
+## String
 echo "Welcome, $1"
 
 Slice strings: 
@@ -100,16 +102,43 @@ Slice strings:
 Concatenate string: `echo $a$b`   
 In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\n\r"`
 
+## List
+
+```bash
+list1=("item1" "item2" "item3")
+list1=(
+  "item1"
+  "item2"
+)
+
+# Access a list's item
+echo ${list1[0]}
+```
+
 # Date and time
 ```bash
 start_time=$SECONDS # Get current time in seconds
 elapsed=$(( SECONDS - start_time )) # How many seconds have passed
 
 # Get current time
+now=$(date +"%FORMAT") # where FORMAT - different arguments
+
 now=$(date -R) # Mon, 26 Jun 2022 HH:MM:SS GMT
 now=$(date +"%T") # HH:MM:SS ## NOTE! no space before "%T"
 now=$(date +"%r") # HH:MM:SS PM
 now=$(date +"%I:%M:%S") # HH:MM:SS (12-hour based)
+```
+date FORMAT arguments
+| Argument | Function |
+| --- | --- |
+| `-R` | Mon, 26 Jun 2022 HH:MM:SS GMT |
+| `+"%T"` | HH:MM:SS (24-hr format) |
+| `+"%r"` | HH:MM:SS PM (12-hr format) |
+| `+"%I:%M:%S"` | HH:MM:SS (12-hour) |
+
+Some interesting abilities:
+```bash
+cal # print calendar
 ```
 
 
@@ -222,21 +251,7 @@ Chris,Evans
 ```
 
 Iterate row-by-row, printing one column only
-```sh
-cat file.csv | while IFS="," read NAME SURNAME
-do
-  echo SURNAME
-done
-```
-
 ```bash
-cat file.csv | while IFS="," read NAME SURNAME
-do
-  echo SURNAME
-done
-```
-
-```shell
 cat file.csv | while IFS="," read NAME SURNAME
 do
   echo SURNAME
