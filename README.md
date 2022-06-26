@@ -57,7 +57,7 @@
 
 ```bash
 : '
-command out
+comment out
 multiple lines
 '
 ```
@@ -254,6 +254,14 @@ cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
 - Print column 3 and up  ```cut -f 3- input.txt```
 
 ## ECHO_PRINTF
+
+```bash
+echo "Hello, world!"
+
+# Print multiple lines
+echo 'asdf
+asdf'
+```
 
 Flags for ECHO:   
 | Flag | Action |
