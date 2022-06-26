@@ -104,7 +104,9 @@ In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\
 start_time=$SECONDS # Get current time in seconds
 elapsed=$(( SECONDS - start_time )) # How many seconds have passed
 
-now=$(date +"%T") # Get current time HH:MM:SS ## NOTE! no space before "%T"
+# Get current time
+now=$(date -R) # Mon, 26 Jun 2022 HH:MM:SS GMT
+now=$(date +"%T") # HH:MM:SS ## NOTE! no space before "%T"
 now=$(date +"%r") # HH:MM:SS PM
 now=$(date +"%I:%M:%S") # HH:MM:SS (12-hour based)
 ```
