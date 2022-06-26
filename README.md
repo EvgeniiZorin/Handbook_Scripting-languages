@@ -30,6 +30,7 @@
   - [ECHO_PRINTF](#ECHO_PRINTF)
   - [GREP](#GREP)
   - [LS](#LS)
+  - [RANDOM](#RANDOM)
   - [RENAME](#RENAME)
   - [SCREEN](#SCREEN)
   - [SED](#SED)
@@ -122,11 +123,6 @@ elapsed=$(( SECONDS - start_time )) # How many seconds have passed
 
 # Get current time
 now=$(date +"%FORMAT") # where FORMAT - different arguments
-
-now=$(date -R) # Mon, 26 Jun 2022 HH:MM:SS GMT
-now=$(date +"%T") # HH:MM:SS ## NOTE! no space before "%T"
-now=$(date +"%r") # HH:MM:SS PM
-now=$(date +"%I:%M:%S") # HH:MM:SS (12-hour based)
 ```
 date FORMAT arguments
 | Argument | Function |
@@ -135,6 +131,7 @@ date FORMAT arguments
 | `+"%T"` | HH:MM:SS (24-hr format) |
 | `+"%r"` | HH:MM:SS PM (12-hr format) |
 | `+"%I:%M:%S"` | HH:MM:SS (12-hour) |
+| `+'%m/%d/%Y'` | mm/dd/yyyy  |
 
 Some interesting abilities:
 ```bash
@@ -345,6 +342,12 @@ PRINTF: echo but without newline.
   - -t: sorted by time
   - -l: list of extended information
   - -h: human-readable
+
+## RANDOM
+
+Internal BASH function, returns a pseudorandom integer in the range 0 - 32767.
+
+`N=$(( RANDOM % 4 ))` # Generate random integer from 0 to 3 inclusive. 
 
 ## RENAME
 - Flags: 
