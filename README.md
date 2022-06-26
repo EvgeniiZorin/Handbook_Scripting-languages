@@ -259,8 +259,8 @@ cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
 echo "Hello, world!"
 
 # Print multiple lines
-echo 'asdf
-asdf'
+echo "asdf
+asdf"
 ```
 
 Flags for ECHO:   
