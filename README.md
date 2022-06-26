@@ -229,6 +229,20 @@ do
 done
 ```
 
+```bash
+cat file.csv | while IFS="," read NAME SURNAME
+do
+  echo SURNAME
+done
+```
+
+```shell
+cat file.csv | while IFS="," read NAME SURNAME
+do
+  echo SURNAME
+done
+```
+
 # Main functions
 
 ## Running jobs
