@@ -85,6 +85,8 @@ Give permission to run an executable `chmod +x <filename>`
 # Assign variables:
 a="Hello"; b=22; c="${a}, I am ${b} years old!"; 
 d=$(( b - 6 )) # Assign expression to a variable
+d=$(echo $VAR | sed 's/_/-/')
+
 # Read user input
 read VARNAME
 # Use a variable
