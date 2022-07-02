@@ -411,6 +411,12 @@ Internal BASH function (or a BASH environment variable), returns a pseudorandom 
 - Replace all occurrences of str1 with str2 ```sed 's/str1/str2/g' file.txt```
 - Replace delim '\t' with ';' ```sed 's/\t/;/g' file.txt```
 
+`SED` can be used with regex:
+```bash
+echo "$(echo '   M e ' | sed 's/^ *//g' )." # Remove all leading spaces
+echo "$(echo '   M e   ' | sed 's/ *$//g' )." # Remove all trailing spaces
+```
+
 ## SHUF
 - Get N random lines `shuf -n N input >output`
 
