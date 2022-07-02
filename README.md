@@ -171,7 +171,8 @@ Example:
 - Print all these files: `echo {a,b,c}.txt` or `echo {1..5}.txt`
 - Expression start with "h", has at least one character after it, and ends with "d": `^h.+d$`
 - Check if variable var1 ends with "?": `[[ $var1 =~ \?$ ]]`
-- Is variable a number? `[[ a =~ [0-9] ]]`
+- Is a string a number? `[[ a =~ [0-9] ]]`
+- Does the string NOT consist of any number of numbers from start to end? `[[ ! 11 =~ ^[0-9]+$ ]]; echo $?`
 
 
 # FOR loop
