@@ -415,7 +415,7 @@ Internal BASH function (or a BASH environment variable), returns a pseudorandom 
 ```bash
 echo "$(echo '   M e ' | sed 's/^ *//g' )." # Remove all leading spaces
 echo "$(echo '   M e   ' | sed 's/ *$//g' )." # Remove all trailing spaces
-echo "$(echo '   M e   ' | sed 's/^ *| *$//g' )." # Do both 
+echo "$(echo '   M e   ' | sed -r 's/^ *| *$//g' )." # Do both 
 ```
 
 ## SHUF
