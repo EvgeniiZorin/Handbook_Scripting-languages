@@ -260,16 +260,27 @@ until [[ condition ]]; do STATEMENT; done
 # Function definition
 
 Here is an example:    
-```
+```bash
 function functName {
   echo "Hello world!"
- }
- # or
- functname() {
+}
+```
+or
+```bash
+functname() {
  ...
- }
+}
  
  functName
+```
+
+You can pass positional arguments without explicitly assigning them in function definition:
+```bash
+greeting () {
+  echo "Hello $1"
+}
+
+greeting "Joe"
 ```
 
 # File handling
