@@ -302,6 +302,11 @@ do
 done
 ```
 
+Another function worth mentioning is opening online links:
+```bash
+xdg-open <http://link_here>
+```
+
 # Main functions
 
 ## Running jobs
