@@ -70,6 +70,15 @@ multiple lines
 | --- | --- |
 | `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command `<cmd>` |
 
+## Redirecting output
+
+| Redirecting sign | Action |
+| --- | --- |
+| `1>` | Output stdout to file, e.g. `good_command 1> stdout.txt` |
+| `2>` | Output stderror to file, e.g. `bad_command 2> stderr.txt` |
+| `>` | Redirect both stderr and stdout |
+
+
 **File management**:
 - Create nested dirs ```mkdir -p```
 - Move several files to a dir ```mv file1.txt file2.txt dirname```
@@ -385,6 +394,13 @@ PRINTF: echo but without newline.
   - -r: recursive search, case-sensitive
   - -E: **allows to use extended regexp**
   - -o: matches more than once per each line
+  - --color: color matches within lines
+
+Examples: 
+```bash
+# Search words that start with dog or woof
+grep 'dog[a-z]* | woof[a-z]*'
+```
 
 ## LS
 - Flags:
@@ -427,6 +443,7 @@ Internal BASH function (or a BASH environment variable), returns a pseudorandom 
 - Remove spaces in a string ```echo $1 | sed 's/ //g'```
 - Replace all occurrences of str1 with str2 ```sed 's/str1/str2/g' file.txt```
 - Replace delim '\t' with ';' ```sed 's/\t/;/g' file.txt```
+- Replace multiple patterns: `sed 's/pattern1/replacement1/; s/pattern2/replacement2/'`
 
 `SED` can be used with regex:
 ```bash
@@ -434,6 +451,10 @@ echo "$(echo '   M e ' | sed 's/^ *//g' )." # Remove all leading spaces
 echo "$(echo '   M e   ' | sed 's/ *$//g' )." # Remove all trailing spaces
 echo "$(echo '   M e   ' | sed -r 's/^ *| *$//g' )." # Do both 
 ```
+Replace SED flags:
+- `-g`: regex flag = replace all instances of a pattern
+- `-i`: ignore the case of a pattern
+
 
 ## SHUF
 - Get N random lines `shuf -n N input >output`
