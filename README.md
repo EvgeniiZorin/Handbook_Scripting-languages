@@ -454,6 +454,7 @@ echo "$(echo '   M e   ' | sed -r 's/^ *| *$//g' )." # Do both
 Replace SED flags:
 - `-g`: regex flag = replace all instances of a pattern
 - `-i`: ignore the case of a pattern
+- `-r`: use extended regexp, such as "+"
 
 
 ## SHUF
