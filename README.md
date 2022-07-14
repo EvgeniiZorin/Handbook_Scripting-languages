@@ -268,19 +268,20 @@ function functName {
 or
 ```bash
 functname() {
- ...
+ echo "Hello $1"
 }
  
- functName
+functName "Joe"
 ```
 
-You can pass positional arguments without explicitly assigning them in function definition:
+Here's how to return the output of the function:
 ```bash
-greeting () {
-  echo "Hello $1"
+my_function () {
+  local func_result="some result"
+  echo "$func_result"
 }
 
-greeting "Joe"
+func_result="$(my_function)"
 ```
 
 # File handling
