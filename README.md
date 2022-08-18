@@ -28,6 +28,7 @@
   - [CP](#CP)
   - [CUT](#CUT)
   - [ECHO_PRINTF](#ECHO_PRINTF)
+  - [FIND](#FIND)
   - [GREP](#GREP)
   - [LS](#LS)
   - [RANDOM](#RANDOM)
@@ -379,6 +380,16 @@ Flags for ECHO:
 | `for i in {1..75}; do echo -n "-"; done` | Print header line in Linux |
 
 PRINTF: echo but without newline. 
+
+## FIND
+
+`Find` command is used to search directories for files. 
+
+`find` - view the file tree from the current directory. 
+
+| Flag | Function |
+| --- | --- |
+| `-name` | Search for the specific file / directory, e.g. `find -name index.html` |
 
 ## GREP
 - Print lines containing one letter within A-Z ```grep -w "[A-Z]" input.txt```
