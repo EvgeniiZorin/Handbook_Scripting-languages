@@ -48,7 +48,6 @@
 # General info
 - Change pw ```passwd```
 - Print current date ```date```
-- Print history ```history```
 - Check the server's load ```top``` or ```htop```
 - Check how many resources we have ```df -h```
 - See info about the file ```file file.txt```
@@ -59,6 +58,10 @@
 - Print difference btw two files, or print nothing if equal ```diff file1.txt file2.txt``` add flag -u for a more readable output
 - Clear the screen w/o deleting the scroll history ```clear -x``` or shortcut in Win ```ctrl + L```
 - Check exit status of the last cmd `echo $?`. Zero errors is 0, doesn't exist or False is 1. 
+
+**History**
+- Print history `history`
+- Execute cmd from a line number X from history `!X`
 
 ```bash
 : '
