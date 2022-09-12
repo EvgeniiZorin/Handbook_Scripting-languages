@@ -485,6 +485,7 @@ Replace SED flags:
 
 ## TR
 - Trim delete newlines ```tr -d '\n\r'```
+- Trim carriage returns "\r" `tr -d '\r'`
 
 ## UNIQ
 - Remove replciates from sorted data, leaving only unique values ```uniq```
