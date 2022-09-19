@@ -299,6 +299,8 @@ func_result="$(my_function)"
 
 # File handling
 
+`mkdir -p nested1/nested2` - create a nested directory
+
 Let's say you have a `file.csv` file:
 ```csv
 name,surname
