@@ -1,6 +1,5 @@
 # Bash handbook 
 
-*Ver 2.1.0*
 
 > This is a practical handbook about the basic functions and concepts in BASH that I wrote for my own reference in case I forget a certain BASH function. If you stumble upon this handbook and find it useful, the pleasure is mine :)    
 > .   
@@ -9,41 +8,49 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
 # Contents
+- [Bash handbook](#bash-handbook)
+- [Contents](#contents)
 - [General info](#general-info)
+  - [Redirecting output](#redirecting-output)
 - [chmod](#chmod)
-- [Variables](#Variables)
-  - [String](#String)
-  - [Array](#Array)
-- [Date and time](#Date-and-time)
-- [Regular expressions](#Regular-expressions)
-- [FOR loop](#FOR-loop)
-- [Conditional statements](#Conditional-statements)
-- [Math](#Math)
-- [Function definition](#Function-definition)
-- [File handling](#File-handling)
-- [Main functions](#Main-functions)
-  - [AWK](#AWK)
-  - [CAT](#CAT)
-  - [CD](#CD)
-  - [CP](#CP)
-  - [CUT](#CUT)
-  - [ECHO_PRINTF](#ECHO_PRINTF)
-  - [FIND](#FIND)
-  - [GREP](#GREP)
-  - [LS](#LS)
-  - [RANDOM](#RANDOM)
-  - [RENAME](#RENAME)
-  - [SCREEN](#SCREEN)
-  - [SED](#SED)
-  - [SHUF](#SHUF)
-  - [SORT](#SORT)
-  - [TR](#TR)
-  - [UNIQ](#UNIQ)
-  - [WC](#WC)
-  - [XARGS](#XARGS)
-  - [ZIP, GZIP](#ZIP_GZIP)
-- [Bioinformatics commands](#Bioinformatics-commands)
-- [BASH scripting](#BASH-scripting)
+- [Variables](#variables)
+  - [String](#string)
+  - [Array](#array)
+- [Date and time](#date-and-time)
+- [Regular expressions](#regular-expressions)
+- [FOR loop](#for-loop)
+- [Conditional statements](#conditional-statements)
+  - [IF](#if)
+  - [WHILE](#while)
+  - [UNTIL](#until)
+- [Math](#math)
+- [Function definition](#function-definition)
+- [File handling](#file-handling)
+- [Main functions](#main-functions)
+  - [Running jobs](#running-jobs)
+  - [AWK](#awk)
+  - [CAT](#cat)
+  - [CD](#cd)
+  - [CP](#cp)
+  - [CUT](#cut)
+  - [ECHO_PRINTF](#echo_printf)
+  - [FIND](#find)
+  - [GREP](#grep)
+  - [LS](#ls)
+  - [RANDOM](#random)
+  - [RENAME](#rename)
+  - [SCREEN](#screen)
+  - [SED](#sed)
+  - [SHUF](#shuf)
+  - [SORT](#sort)
+  - [TR](#tr)
+  - [UNIQ](#uniq)
+  - [WC](#wc)
+  - [XARGS](#xargs)
+  - [ZIP_GZIP](#zip_gzip)
+- [Workload managers](#workload-managers)
+- [Bioinformatics commands](#bioinformatics-commands)
+- [BASH scripting](#bash-scripting)
 
 # General info
 - Change pw ```passwd```
@@ -397,23 +404,35 @@ PRINTF: echo but without newline.
 | `-name` | Search for the specific file / directory, e.g. `find -name index.html` |
 
 ## GREP
-- Print lines containing one letter within A-Z ```grep -w "[A-Z]" input.txt```
-- Print lines containing one letter within A-Z at start of line ```grep "^[A-Z]" input.txt```
-- Print lines with 'h' at line start ```grep "^h" file.txt```
-- Print lines containing string with a letter at the end ```grep -E "string[a-z]" file.txt```
-- Flags: 
-  - -i: ignore case
-  - -c: print line count
-  - -v: lines that don't contain ...
-  - -n: specified line number in which the query was found
-  - -nC 1: prints 1 line before and after the matching line
-  - -r: recursive search, case-sensitive
-  - -E: **allows to use extended regexp**
-  - -o: matches more than once per each line
-  - --color: color matches within lines
+
+Flags:
+
+| Flag | Meaning |
+| - | - |
+| `-i`      | ignore case |
+| `-c`      | print line count |
+| `-v`      | lines that don't contain ... |
+| `-n`      | specified line number in which the query was found |
+| `-nC`     |  1: prints 1 line before and after the matching line |
+| `-r`      | recursive search, case-sensitive |
+| `-E`      | **allows to use extended regexp** |
+| `-o`      | matches more than once per each line |
+| `--color` | color matches within lines |
+
 
 Examples: 
 ```bash
+
+# Print lines containing one of the specified substring
+grep -iE "string1|string2" 
+# Print lines containing one letter within A-Z 
+grep -w "[A-Z]" input.txt
+# Print lines containing one letter within A-Z at start of line 
+grep "^[A-Z]" input.txt
+# Print lines with 'h' at the start of the line 
+grep "^h" file.txt
+# Print lines containing string with a letter at the end 
+grep -E "string[a-z]" file.txt
 # Search words that start with dog or woof
 grep 'dog[a-z]* | woof[a-z]*'
 ```
