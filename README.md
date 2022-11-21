@@ -53,6 +53,10 @@
 - [BASH scripting](#bash-scripting)
 
 # General info
+
+If you are working on WSL Ubuntu terminal, you could cd to the Desktop folder with the following command:
+```cd /mnt/c/Users/evgen/Desktop```
+
 - Change pw ```passwd```
 - Print current date ```date```
 - Check the server's load ```top``` or ```htop```
