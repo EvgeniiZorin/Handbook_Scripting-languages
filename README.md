@@ -126,6 +126,15 @@ declare -p VARNAME
 - Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
 - Give default value to a variable if a value not assigned: `VAR1="${1:-you}" `
 
+**Environmental variables in Linux**
+
+You can check the available environmental variables by the commands `env`, `printenv`; alternatively, print a specific env variable by `printenv NAME` or `echo $NAME`. 
+
+To permanently assign an environmental variable, perform the following steps:
+- `nano ~/.bashrc`
+- At the bottom of the file, add the following line: `export NAME="value"`
+- Subsequently, update the .bashrc file: `source .bashrc`
+
 ## String
 echo "Welcome, $1"
 
