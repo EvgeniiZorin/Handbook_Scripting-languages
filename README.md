@@ -33,7 +33,7 @@
   - [CD](#cd)
   - [CP](#cp)
   - [CUT](#cut)
-  - [ECHO_PRINTF](#echo_printf)
+  - [ECHO\_PRINTF](#echo_printf)
   - [FIND](#find)
   - [GREP](#grep)
   - [LS](#ls)
@@ -47,7 +47,7 @@
   - [UNIQ](#uniq)
   - [WC](#wc)
   - [XARGS](#xargs)
-  - [ZIP_GZIP](#zip_gzip)
+  - [ZIP\_GZIP](#zip_gzip)
 - [Workload managers](#workload-managers)
 - [Bioinformatics commands](#bioinformatics-commands)
 - [BASH scripting](#bash-scripting)
@@ -104,6 +104,15 @@ multiple lines
 Give permission to run an executable `chmod +x <filename>`
 
 # Variables
+
+Environment variables:
+| Action with env vars | Command | 
+| - | - |
+| Print all | `printenv`, `env` |
+| Print a specific one | `echo $NAME`, `printenv NAME` |
+| Permanently set an env var | `nano ~/.bashrc`, then add the var value at the end: `export VAR_NAME="value"`, finally update the .bashrc file using the command: `source .bashrc` |
+
+
 
 ```bash
 # Assign variables:
