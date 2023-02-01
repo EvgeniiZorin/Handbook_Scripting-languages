@@ -388,6 +388,9 @@ cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
 
 ## CP
 - Copy multiple files to a dir ```cp {file1,file2,file3}.txt dir```
+
+Copy a directory to the parent directory: ```cp -r dirname ..```
+
 - Flags:
   - -v: with verbose
 
