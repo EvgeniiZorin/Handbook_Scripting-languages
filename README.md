@@ -28,6 +28,7 @@
 - [File handling](#file-handling)
 - [Main functions](#main-functions)
   - [Running jobs](#running-jobs)
+  - [Archives](#archives)
   - [AWK](#awk)
   - [CAT](#cat)
   - [CD](#cd)
@@ -46,11 +47,14 @@
   - [TR](#tr)
   - [UNIQ](#uniq)
   - [WC](#wc)
+  - [WGET](#wget)
   - [XARGS](#xargs)
-  - [ZIP\_GZIP](#zip_gzip)
 - [Workload managers](#workload-managers)
 - [Bioinformatics commands](#bioinformatics-commands)
 - [BASH scripting](#bash-scripting)
+- [Working with servers](#working-with-servers)
+  - [SSH](#ssh)
+  - [SCP](#scp)
 
 # General info
 
@@ -360,6 +364,24 @@ xdg-open <http://link_here>
 
 <hr />
 
+## Archives
+
+Main types of archives: `.gz`, `.tar.gz`, `.zip`, `.7z`
+
+| Archive | Description | Pack | Unpack |
+| - | - | - | - |
+| `.gz` | **Archive**. Archives <u>only individual files</u>, never a directory. | `gzip example.fasta`, `gzip -k filename.txt` | `gunzip example.fasta.gz` |
+| `.tar` | **Container**. Utility `tar` containerises a folder. Usually, that container is then archived with `gzip` to get an **archive** `.tar.gz` | `tar -czvf example.tar.gz folder_name` | `tar -xzvf example.tar.gz` |
+| `.zip` | **Archive**.  | `zip example.zip folder_name/*` | `unzip example.zip` |
+| `.7z` |  | | |
+
+
+- Zip (.zip) all files in the current dir ```zip archiveName *``` or ```zip archiveName *.tsv```
+- Zip (.zip) a directory ```zip -r output.zip inputdir```
+- Unzip ```gzip -d file``` or ```gunzip file```
+- Extract a .tar.gz file with verbose ```tar -xvf archive.tar.gz```
+
+
 ## AWK
 - Operators: 
   - AND ```$$```
@@ -549,16 +571,19 @@ Replace SED flags:
   - -L: prints only length of the longest line
   - -X: print number of lines, words, byte count
 
+## WGET
+
+Downloads files. 
+
+```wget <link>```
+
+Flags:
+- Save the file in a certain name: `-O filename.txt`
+
+
 ## XARGS
 - Use output of file.txt as args in function 'rm' ```cat file.txt | xargs rm```
 - ```find . -size +1M | xargs ls -lh```
-
-## ZIP_GZIP
-- Zip (.gz) a file ```gzip -k filename.txt```
-- Zip (.zip) all files in the current dir ```zip archiveName *``` or ```zip archiveName *.tsv```
-- Zip (.zip) a directory ```zip -r output.zip inputdir```
-- Unzip ```gzip -d file``` or ```gunzip file```
-- Extract a .tar.gz file with verbose ```tar -xvf archive.tar.gz```
 
 
 # Workload managers
@@ -587,3 +612,32 @@ Print all arguments passed to the scriplt `$*`
   - Debug ```set -x```
   - Prohibits overwriting existing regular files ``` set -C```
 - Slicing a string ```echo "string1" | cut -c1-3``` 
+
+# Working with servers
+
+## SSH
+
+SSH (Secure Socket Shell) provides means of encrypted communication between your PC and a server. On Windows, we can use utility putty. 
+
+Find out my IP: run `ip r` in bash terminal. Your IP will be the one after "src". 
+
+command:
+```bash
+ssh <username>@<server IP>
+```
+
+If you can't connect, on your server use command `sudo service ssh status`. If it says "unit ssh.service could not be found", run the following command: `sudo apt-get install openssh-server`. 
+
+## SCP
+
+To download files from the server onto your local machine. On windows, we can use utility WinSCP. 
+
+command:
+```bash
+# Download file from server
+scp <username>@<ip>:<full path of file> <address on local machine or current dir>
+# Add flag -r after scp if you want to download a directory
+
+# Upload file onto server
+scp <path from where upload> <username>@<ip>:<full_path to where upload>
+```
