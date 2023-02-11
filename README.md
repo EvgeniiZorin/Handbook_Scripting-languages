@@ -11,19 +11,20 @@
 - [Bash handbook](#bash-handbook)
 - [Contents](#contents)
 - [General info](#general-info)
-  - [Redirecting output](#redirecting-output)
+- [Standard streams](#standard-streams)
 - [chmod](#chmod)
 - [Variables](#variables)
+- [Data Types](#data-types)
   - [String](#string)
   - [Array](#array)
+  - [Int and float](#int-and-float)
 - [Date and time](#date-and-time)
 - [Regular expressions](#regular-expressions)
-- [FOR loop](#for-loop)
-- [Conditional statements](#conditional-statements)
+- [Conditional statements and loops](#conditional-statements-and-loops)
   - [IF](#if)
   - [WHILE](#while)
   - [UNTIL](#until)
-- [Math](#math)
+  - [FOR](#for)
 - [Function definition](#function-definition)
 - [File handling](#file-handling)
 - [Main functions](#main-functions)
@@ -75,7 +76,8 @@ If you are working on WSL Ubuntu terminal, you could cd to the Desktop folder wi
 - Check exit status of the last cmd `echo $?`. Zero errors is 0, doesn't exist or False is 1. 
 
 **History**
-- Print history `history`
+- Print history: `history`
+- Find a specific command within history: `history | grep "<command>"`
 - Execute cmd from a line number X from history `!X`
 
 ```bash
@@ -89,13 +91,15 @@ multiple lines
 | --- | --- |
 | `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command `<cmd>` |
 
-## Redirecting output
+# Standard streams
 
 | Redirecting sign | Action |
 | --- | --- |
 | `1>` | Output stdout to file, e.g. `good_command 1> stdout.txt` |
 | `2>` | Output stderror to file, e.g. `bad_command 2> stderr.txt` |
-| `>` | Redirect both stderr and stdout |
+| `>` | Redirect both stderr and stdout. If file exists, **rewrites the file** |
+| `>>` | Appends to a file if exists. |
+
 
 
 **File management**:
@@ -148,6 +152,8 @@ To permanently assign an environmental variable, perform the following steps:
 - At the bottom of the file, add the following line: `export NAME="value"`
 - Subsequently, update the .bashrc file: `source .bashrc`
 
+# Data Types
+
 ## String
 echo "Welcome, $1"
 
@@ -175,6 +181,20 @@ echo ${arr1[0]}
 echo ${arr1[@]} # or...
 echo ${arr1[*]}
 ```
+
+## Int and float
+
+```bash
+var1=$(( 5 + 5 ))
+var2=$(( $var1 + 5))
+
+echo $(( a * b ))
+
+x=$(( $x + 1 ))
+```
+
+Check if $factor is factor of $base: 
+```if (($base%$factor == 0)); then echo "true"; else echo "false"; fi```
 
 # Date and time
 ```bash
@@ -226,27 +246,12 @@ Example:
 - Does the string NOT consist of any number of numbers from start to end? `[[ ! 11 =~ ^[0-9]+$ ]]; echo $?`
 
 
-# FOR loop
 
-Var 1
-```bash
-for ((i=1; i<=10; i++)); do echo "a"; done
-```
-Var2
-```bash
-for i in {START..STOP..STEP}; do echo $i; done
-```
-
-Print the same character N times: 
-```bash
-b=10; 
-for i in $(seq 1 $b); do echo -n 'a'; done; echo '' 
-```
-
-
-# Conditional statements
+# Conditional statements and loops
 
 ## IF
+
+
 
 ```bash
 # Version 1 (use $ sign to denote variables):
@@ -273,8 +278,12 @@ if (( condition ));
 | `&&` | AND **(Comparison operators)** |
 | `||` | OR |
 
-```if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi```   
-```if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi```     
+Examples:
+```bash
+if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi
+if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi
+```
+
 Check if directory exists: `if [ -d "Dirname" ]; then echo "Exists!"; fi`   
 Create directory if it does not exist: `if [ ! -d "Dirname" ]; then mkdir Dirname; fi`   
     
@@ -285,7 +294,15 @@ Create directory if it does not exist: `if [ ! -d "Dirname" ]; then mkdir Dirnam
 while [[ CONDITION ]]; do STATEMENTS; done
 ```
 
-```x=1; while [ $x -le 5 ]; do echo "Welcome $x times"; x=$(( $x + 1 )); done```
+Examples:
+```bash
+# Print a string until you exit
+while : ; do echo "Press <CTRL+C> to exit."; sleep 1; done
+
+x=1; while [ $x -le 5 ]; do echo "Welcome $x times"; x=$(( $x + 1 )); done
+```
+
+
 
 ## UNTIL
 
@@ -293,15 +310,29 @@ while [[ CONDITION ]]; do STATEMENTS; done
 until [[ condition ]]; do STATEMENT; done
 ```
 
+## FOR
 
-# Math
+This loop is needed to iterate for some kind of values. 
 
-- Work with int ```let "var = $var + 5"```
-- Work with floats ```echo "$a*0.7" | bc```
-- Modulo - give the division remainder: `%`
-- Check if $factor is factor of $base: `if (($base%$factor == 0)); then echo "true"; else echo "false"; fi`
+Var 1
+```bash
+for ((i=1; i<=10; i++)); do echo "a"; done
+```
+Var2
+```bash
+for i in {START..STOP..STEP}; do echo $i; done
+```
 
-`echo $(( a * b ))`
+Print the same character N times: 
+```bash
+b=10; 
+for i in $(seq 1 $b); do echo -n 'a'; done; echo '' 
+```
+
+Examples:
+```bash
+for var in "first" "second" "third"; do echo "The $var item"; done
+```
 
 # Function definition
 
@@ -429,6 +460,9 @@ echo "Hello, world!"
 # Print multiple lines
 echo "asdf
 asdf"
+
+# Use a variable
+echo "Home current user is: $HOME"
 ```
 
 Flags for ECHO:   
@@ -466,9 +500,13 @@ Flags:
 | `-o`      | matches more than once per each line |
 | `--color` | color matches within lines |
 
+Command: `grep "<pattern>" <file>`
 
 Examples: 
 ```bash
+
+# Print lines with 'h' at the start of the line 
+grep "^h" file.txt
 
 # Print lines containing one of the specified substring
 grep -iE "string1|string2" 
@@ -476,8 +514,6 @@ grep -iE "string1|string2"
 grep -w "[A-Z]" input.txt
 # Print lines containing one letter within A-Z at start of line 
 grep "^[A-Z]" input.txt
-# Print lines with 'h' at the start of the line 
-grep "^h" file.txt
 # Print lines containing string with a letter at the end 
 grep -E "string[a-z]" file.txt
 # Search words that start with dog or woof
@@ -520,12 +556,57 @@ Internal BASH function (or a BASH environment variable), returns a pseudorandom 
 - Kill ```screen -X -S [session # you want to kill] kill```
 
 ## SED
-- Print line 2 ```sed -n 2p file.txt```
-- Remove line 7 inplace ```sed -ie '7d' file.txt``` or ```sed -i '7d' file.txt```
-- Remove spaces in a string ```echo $1 | sed 's/ //g'```
-- Replace all occurrences of str1 with str2 ```sed 's/str1/str2/g' file.txt```
-- Replace delim '\t' with ';' ```sed 's/\t/;/g' file.txt```
-- Replace multiple patterns: `sed 's/pattern1/replacement1/; s/pattern2/replacement2/'`
+
+A stream editor for bash. Can be used either with a file (`sed <command> <file>`) or from a printed text (`cat <file> | sed <command>`)
+
+Main commands:
+
+```bash
+######################################################################
+#####   PRINT   ######################################################
+######################################################################
+### Print a specified line
+sed -n 2p file.txt #or
+sed -n '2p' file.txt
+### Print several lines, e.g. line 1 and line 3 only
+sed -n '1p;3p' file.txt
+### Print from line 1 to line 3
+sed -n '2,3p' file.txt
+### Print lines starting from 1 with step of 2 lines
+sed -n '1~2p' file.txt
+
+######################################################################
+#####   DELETE   #####################################################
+######################################################################
+# If you want to delete inplace, add a flag `-i`
+### Delete line 7
+sed '7d' file.txt
+### Delete lines 7 to 9 inclusive
+sed '7,9d' file.txt
+
+######################################################################
+#####   SUBSTITUTE   #################################################
+######################################################################
+# Pattern substitution command. Supports regex. 
+# First argument: s - substitute
+# Last argument: g - global (all occurrences)
+# Slash is the default separating symbol, but any other symbol can be used. E.g., sed 's|1|5|g', sed 's%1%5%g', etc.
+### Replace pattern 1 with pattern 2 (all occurrences)
+sed 's/pattern 1/pattern 2/g' file.txt
+### Remove all spaces in a string
+sed 's/ //g' file.txt
+### Replace delim '\t' with ';'
+sed 's/\t/;/g' file.txt
+### Replace multiple patterns
+sed 's/pattern 1/replace 1/; s/pattern 2/replace 2/'
+
+### Replace 1st occurrence only
+sed -z 's/pattern 1/pattern 2/1' file.txt
+### Replace 5th occurrence only
+sed -z 's/pattern 1/pattern 2/5' file.txt
+```
+
+
 
 `SED` can be used with regex:
 ```bash
@@ -603,8 +684,8 @@ Flags:
 
 # BASH scripting
 
-Shebang: `#!/bin/bash`
-  
+Put a shebang at the top of the shell script: `#!/bin/bash`
+
 Print all arguments passed to the scriplt `$*`
 
 - Concatenate a string: ```var1="I really enjoy"; var1+="programming"``` or ```var1="I really"; var2=" prog"; var3="${var1} enjoy ${var2}"```
