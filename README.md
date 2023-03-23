@@ -53,9 +53,7 @@
 - [Workload managers](#workload-managers)
 - [Bioinformatics commands](#bioinformatics-commands)
 - [BASH scripting](#bash-scripting)
-- [Working with servers](#working-with-servers)
-  - [SSH](#ssh)
-  - [SCP](#scp)
+
 
 # General info
 
@@ -695,31 +693,4 @@ Print all arguments passed to the scriplt `$*`
   - Prohibits overwriting existing regular files ``` set -C```
 - Slicing a string ```echo "string1" | cut -c1-3``` 
 
-# Working with servers
 
-## SSH
-
-SSH (Secure Socket Shell) provides means of encrypted communication between your PC and a server. On Windows, we can use utility putty. 
-
-Find out my IP: run `ip r` in bash terminal. Your IP will be the one after "src". 
-
-command:
-```bash
-ssh <username>@<server IP>
-```
-
-If you can't connect, on your server use command `sudo service ssh status`. If it says "unit ssh.service could not be found", run the following command: `sudo apt-get install openssh-server`. 
-
-## SCP
-
-To download files from the server onto your local machine. On windows, we can use utility WinSCP. 
-
-command:
-```bash
-# Download file from server
-scp <username>@<ip>:<full path of file> <address on local machine or current dir>
-# Add flag -r after scp if you want to download a directory
-
-# Upload file onto server
-scp <path from where upload> <username>@<ip>:<full_path to where upload>
-```
