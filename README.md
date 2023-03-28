@@ -397,13 +397,13 @@ xdg-open <http://link_here>
 
 Main types of archives: `.gz`, `.tar.gz`, `.zip`, `.7z`
 
-| Archive | Description | Pack | Unpack |
-| - | - | - | - |
-| `.gz` | **Archive**. Archives <u>only individual files</u>, never a directory. | `gzip example.fasta`, `gzip -k filename.txt` | `gunzip example.fasta.gz` |
-| `.tar` | **Container**. Utility `tar` containerises a folder. Usually, that container is then archived with `gzip` to get an **archive** `.tar.gz` | `tar -czvf example.tar.gz folder_name` | `tar -xzvf example.tar.gz` |
-| `.zip` | **Archive**.  | `zip example.zip folder_name/*` | `unzip example.zip` |
-| `.7z` |  | | |
-| `.tgz` | tar gzip | | `tar xzf housing.tgz` |
+| Archive | Pack | Unpack |
+| - | - | - |
+| `.gz` | `gzip example.fasta`, `gzip -k filename.txt` | `gunzip example.fasta.gz` |
+| `.tar` | `tar -czvf example.tar.gz folder_name` | `tar -xzvf example.tar.gz` |
+| `.zip` | `zip example.zip folder_name/*` | `unzip example.zip` |
+| `.7z` | | |
+| `.tgz` | | `tar xzf housing.tgz` |
 
 
 - Zip (.zip) all files in the current dir ```zip archiveName *``` or ```zip archiveName *.tsv```
