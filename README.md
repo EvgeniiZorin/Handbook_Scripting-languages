@@ -441,7 +441,8 @@ Main types of archives: `.gz`, `.tar.gz`, `.zip`, `.7z`
 | Local (Windows) | `c:/tmp` | Relative: `dir1` | `c:/tmp/dir1` |
 | Local (Windows) | `c:/tmp` | Relative: `dir1/dir2` | `c:/tmp/dir1/dir2` |
 | Local (Windows) | `c:/tmp` | Absolute: `c:/another/one` | `c:/another/one` |
-
+| Remote (Linux) | `/var` | Relative: `dir1` | `/var/dir1` |
+| Remote (Linux) | `/var` | Absolute: `/home/users` | `/home/users` |
 
 
 ```bash
