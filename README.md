@@ -435,6 +435,15 @@ Main types of archives: `.gz`, `.tar.gz`, `.zip`, `.7z`
 
 ## CD
 
+`cd` command can be used with relative and absolute paths:
+| Environment | Current directory | Path to cd | Resulting path |
+| - | - | - | - |
+| Local (Windows) | `c:/tmp` | Relative: `dir1` | `c:/tmp/dir1` |
+| Local (Windows) | `c:/tmp` | Relative: `dir1/dir2` | `c:/tmp/dir1/dir2` |
+| Local (Windows) | `c:/tmp` | Absolute: `c:/another/one` | `c:/another/one` |
+
+
+
 ```bash
 cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
 ```
