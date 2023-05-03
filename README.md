@@ -88,6 +88,7 @@ multiple lines
 | Command | Action |
 | --- | --- |
 | `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command `<cmd>` |
+| `du -h file.txt` | Check file size |
 
 # Standard streams
 
