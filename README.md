@@ -45,6 +45,7 @@
   - [SED](#sed)
   - [SHUF](#shuf)
   - [SORT](#sort)
+  - [TMUX](#tmux)
   - [TR](#tr)
   - [UNIQ](#uniq)
   - [WC](#wc)
@@ -89,6 +90,7 @@ multiple lines
 | --- | --- |
 | `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command `<cmd>` |
 | `du -h file.txt` | Check file size |
+| `df -H` | Check available memory |
 | `top` | An older command. Shows processes that consume system resources. |
 | `htop` | A more modern version of `top`. Show every process currently ongoing. |
 | `nvtop` | A command to show the GPU status for the brands such as AMD, Intel, and Nvidia |
@@ -645,6 +647,24 @@ Replace SED flags:
   - -V: sort alphanumerically - numbers, then letters
   - -r: reverse sort
   - -n: numerical sort (10, then 100)
+
+## TMUX
+
+Programa para dejar terminal abierto. 
+
+```bash
+### Create new session 
+tmux new -s <session_name>
+### Check sessions
+tmux ls
+### Then you can close terminal, to return to the terminal 
+tmux attach -t <session_name>
+### leave from session (minimise terminal) 
+tmux detach
+### Close the session (delete session) 
+tmux kill-session -t <name>
+
+```
 
 ## TR
 - Trim delete newlines ```tr -d '\n\r'```
