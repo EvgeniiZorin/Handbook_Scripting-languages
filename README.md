@@ -89,6 +89,9 @@ multiple lines
 | --- | --- |
 | `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command `<cmd>` |
 | `du -h file.txt` | Check file size |
+| `top` | An older command. Shows processes that consume system resources. |
+| `htop` | A more modern version of `top`. Show every process currently ongoing. |
+| `nvtop` | A command to show the GPU status for the brands such as AMD, Intel, and Nvidia |
 
 # Standard streams
 
