@@ -661,6 +661,8 @@ tmux ls
 tmux attach -t <session_name>
 ### leave from session (minimise terminal) 
 tmux detach
+### Rename a session
+tmux rename-session [-t current-name] [new-name]
 ### Close the session (delete session) 
 tmux kill-session -t <name>
 
