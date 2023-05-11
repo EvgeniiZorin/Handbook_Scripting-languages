@@ -89,7 +89,7 @@ multiple lines
 | Command | Action |
 | --- | --- |
 | `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command `<cmd>` |
-| `du -h file.txt` | Check file size |
+| `du -h file.txt`, `du -hc directory` | Check size of file or directory |
 | `df -H` | Check available memory |
 | `top` | An older command. Shows processes that consume system resources. |
 | `htop` | A more modern version of `top`. Show every process currently ongoing. |
