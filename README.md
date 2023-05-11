@@ -47,6 +47,7 @@
   - [SORT](#sort)
   - [TMUX](#tmux)
   - [TR](#tr)
+  - [TREE](#tree)
   - [UNIQ](#uniq)
   - [WC](#wc)
   - [WGET](#wget)
