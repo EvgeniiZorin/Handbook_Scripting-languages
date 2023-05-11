@@ -684,7 +684,7 @@ The syntax is as follows: `tree [options]`
 tree -d
 ```
 
-```bash
+```txt
   ------- Listing options -------
   -a            All files are listed.
   -d            List directories only.
