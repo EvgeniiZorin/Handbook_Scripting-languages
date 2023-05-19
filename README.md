@@ -98,6 +98,13 @@ multiple lines
 
 # Standard streams
 
+output / input redirection
+
+one of the most important features in bash is **piping**, which sends command output to other commands. For example, 
+```bash
+echo "Hello there" | grep "there"
+```
+
 | Redirecting sign | Action |
 | --- | --- |
 | `1>` | Output stdout to file, e.g. `good_command 1> stdout.txt` |
