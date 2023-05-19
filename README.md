@@ -190,6 +190,8 @@ echo "$(echo ' M e ')."
 
 # Read user input
 read VARNAME
+echo "You wrote this variable: \"$VARNAME\""
+
 # Use a variable
 echo $a
 echo $a more stuff
