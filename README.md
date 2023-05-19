@@ -181,6 +181,7 @@ Environment variables:
 ```bash
 # Assign variables:
 a="Hello"; b=22; c="${a}, I am ${b} years old!"; 
+VAR1="Name"
 # Assign expression to a variable via subshell
 d=$(( b - 6 ))
 d=$(echo $VAR | sed 's/_/-/')
@@ -191,9 +192,12 @@ echo "$(echo ' M e ')."
 read VARNAME
 # Use a variable
 echo $a
+echo $a more stuff
+echo "${a} is the username."
 
 # Check variables and their values
 declare -p VARNAME
+
 ```
 - Print number of variables passed `$#`    
 - Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
