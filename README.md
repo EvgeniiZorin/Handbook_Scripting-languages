@@ -393,7 +393,23 @@ for var in "first" "second" "third"; do echo "The $var item"; done
 
 ## CASE statements
 
+Case statements are better than if/elif/else statements when we check for multiple values.
 
+```bash
+# Check the first positional argument (in lowercase) for multiple belonging
+# note the "|" OR statement
+case ${1,,} in 
+  boss | manager | CEO)
+    echo "Hello, boss!"
+    ;;
+  help)
+    echo "let me help you: just enter your username"
+    ;;
+  *)
+    echo "Option not recognised. Please write your username"
+esac
+  
+```
 
 # Function definition
 
