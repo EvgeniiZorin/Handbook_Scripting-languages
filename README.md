@@ -114,6 +114,48 @@ multiple lines
 
 # chmod
 
+We can check permission by running `ls -l` in a directory. Each file / directory will have 10 lines associated with permissions:
+- 1st character: type of entry. `-` for file, `d` for directory
+- 2-4 show user permissions
+- 5-7 show group permissions
+- 8-10 show other permissions
+
+The chmod command operates on the WHO-WHAT-WHICH principle:
+- WHO: Who we are setting permissions for.
+- WHAT: What change are we making? Are we adding or removing the permission?
+- WHICH: Which of the permissions are we setting?
+
+WHO - Main arguments for specifying for whom the permissions are set:
+- `u` - user
+- `g` - group
+- `o` - others
+- `a` - all
+
+WHAT:
+- `–` Minus sign. Removes the permission.
+- `+` Plus sign. Grants the permission. The permission is added to the existing permissions. If you want to have this permission and only this permission set, use the = option, described below.
+- `=` Equals sign. Sets very specific permissions, removing all the others that are not specified.
+
+WHICH - Three main arguments for actions: 
+- `r` - read: a file can be viewed and opened
+- `w` - write: a file can be edited and deleted
+- `x` - execute: a file can be run
+
+Let's consider some example commands:
+
+
+Let's say that we have a file with all permisions: `-rwxrwxrwx 1 root root 13 May 19 10:01 textfile.txt`
+
+If we want for the user to be able to read, write, and execute, and for group and other - to read only, while removing all permissions that you don't explicitly specify,
+you can set like this: `chmod u=rwx,og=r textfile.txt`
+
+We can later add some extra permissions, so that the group can edit: `chmod g+w textfile.txt`
+
+Settings permissions for multiple files: `chmod o-r *.sh`
+
+
+
+
 Give permission to run an executable `chmod +x <filename>`
 
 # Variables
