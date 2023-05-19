@@ -225,12 +225,17 @@ In string, sort unique values `echo $a | grep -o "[a-zA-Z]" |sort|uniq| tr -d "\
 ## Array
 
 ```bash
+arr1=(a b c)
+
 arr1=("a" "b" "c")
 
 arr1=(
   "item1"
   "item2"
 )
+
+# Print the first item
+echo $arr1
 
 # Access a list's item by its index
 echo ${arr1[0]}
@@ -389,6 +394,10 @@ for i in $(seq 1 $b); do echo -n 'a'; done; echo ''
 Examples:
 ```bash
 for var in "first" "second" "third"; do echo "The $var item"; done
+
+# iterate over an array
+MY_FIRST_LIST=(a b c)
+for item in ${MY_FIRST_LIST[@]}; do echo -n $item | wc -c; done
 ```
 
 ## CASE statements
