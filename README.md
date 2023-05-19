@@ -25,6 +25,7 @@
   - [WHILE](#while)
   - [UNTIL](#until)
   - [FOR](#for)
+  - [CASE statements](#case-statements)
 - [Function definition](#function-definition)
 - [File handling](#file-handling)
 - [Main functions](#main-functions)
@@ -98,19 +99,20 @@ multiple lines
 
 # Standard streams
 
-output / input redirection
-
-one of the most important features in bash is **piping**, which sends command output to other commands. For example, 
+One of the most important features in bash is **piping**, which sends command output to other commands. For example, 
 ```bash
 echo "Hello there" | grep "there"
 ```
+
+Output / input redirection
 
 | Redirecting sign | Action |
 | --- | --- |
 | `1>` | Output stdout to file, e.g. `good_command 1> stdout.txt` |
 | `2>` | Output stderror to file, e.g. `bad_command 2> stderr.txt` |
-| `>` | Redirect both stderr and stdout. If file exists, **rewrites the file** |
+| `>` | Write to a file; redirect both stderr and stdout. If file exists, **rewrites the file** |
 | `>>` | Appends to a file if exists. |
+| `<` | Direct input from file on the right to the command on the left. |
 
 
 
@@ -196,6 +198,8 @@ declare -p VARNAME
 - Print number of variables passed `$#`    
 - Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
 - Give default value to a variable if a value not assigned: `VAR1="${1:-you}" `
+
+`${1,,}` - means consider variable as lowercase.
 
 **Environmental variables in Linux**
 
@@ -305,8 +309,6 @@ Example:
 
 ## IF
 
-
-
 ```bash
 # Version 1 (use $ sign to denote variables):
 if [[ condition ]]; then STATEMENT; fi
@@ -336,6 +338,7 @@ Examples:
 ```bash
 if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi
 if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi
+if [ ${1,,} == "johnny" ]; then echo "yes"; else echo "no"; fi
 ```
 
 Check if directory exists: `if [ -d "Dirname" ]; then echo "Exists!"; fi`   
@@ -387,6 +390,10 @@ Examples:
 ```bash
 for var in "first" "second" "third"; do echo "The $var item"; done
 ```
+
+## CASE statements
+
+
 
 # Function definition
 
