@@ -502,12 +502,16 @@ Main types of archives: `.gz`, `.tar.gz`, `.zip`, `.7z`
 
 
 ## AWK
+
+AWK is a powerful text-processing tool in Bash scripting that allows for pattern scanning and processing data.
+
 - Operators: 
   - AND ```$$```
   - OR ```||```
 - Print columns 1 and 2 ```awk '{print $1,$2}' file.txt```
 - Print rows when column 3 == "expr" (no whitespaces present) ```awk '$3 == "expr"'``` or ```awk '{if ($3 == "expr") print $0;}'```
 - Print column 1 if its length is 1 ```awk 'length($1) == 1 {print $1}' filename.txt```
+- Print column 1 (delim = ,) ```awk -F, '{print $1}' file.txt```
 - Print column 3 (delim = \t) ```awk -F"\t" '{print $3}' file.txt``` 
 - Print line if the value of column 5 is <= 100 ```awk '$5<=100 {print}' file.txt```
 - Concatenate multiple columns ```awk -F"\t" '{print "## " $1 " -- " $4 "_END"}' file.txt```
