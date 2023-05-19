@@ -539,12 +539,12 @@ grep 'dog[a-z]* | woof[a-z]*'
 
 ## LS
 - Flags:
-  - -1: one per line
-  - -s: sort by size
-  - -a: all files including hidden ones
-  - -t: sorted by time
-  - -l: list of extended information
-  - -h: human-readable
+  - `-1`: one per line
+  - `-s`: sort by size
+  - `-a`: all files including hidden ones
+  - `-t`: sorted by time
+  - `-l`: list of extended information, including permissions
+  - `-h`: human-readable
 
 ## RANDOM
 
