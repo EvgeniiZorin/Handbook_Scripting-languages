@@ -411,6 +411,15 @@ for item in ${MY_FIRST_LIST[@]}; do echo -n $item | wc -c; done
 Case statements are better than if/elif/else statements when we check for multiple values.
 
 ```bash
+case EXPRESSION in 
+  PATTERN) STATEMENTS ;;
+  PATTERN) STATEMENTS ;;
+  PATTERN) STATEMENTS ;;
+  *) STATEMENTS ;;
+esac
+```
+
+```bash
 # Check the first positional argument (in lowercase) for multiple belonging
 # note the "|" OR statement
 case ${1,,} in 
