@@ -28,3 +28,8 @@ You can set environment variable in GUI by following the following steps:
 - Define a variable
 
 
+# Text editing
+
+```powershell
+pip freeze | Select-String -Pattern "pandas|numpy|matplotlib|seaborn|tensorflow" > requirements.txt
+```
