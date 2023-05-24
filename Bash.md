@@ -601,6 +601,14 @@ PRINTF: echo but without newline.
 | --- | --- |
 | `-name` | Search for the specific file / directory, e.g. `find -name index.html` |
 
+Some examples of use:
+```bash
+### Remove all zero-byte files from the filesystem
+!find /tmp/data/ -size 0 -exec rm {} +
+### removes any file that does not have a .jpg extension
+!find /tmp/data/ -type f ! -name "*.jpg" -exec rm {} +
+```
+
 ## GREP
 
 Flags:
