@@ -11,12 +11,14 @@
 # List all environment variables
 Get-ChildItem Env:
 # Print a specific environment variable
-echo $Env:EMAIL_USER
+echo $Env:EMAIL_USER # or $Env:EMAIL_USER
+$Env:Path # for path; even better output - `$Env:Path -split ';'`
 
 # Set an env var:
 [Environment]::SetEnvironmentVariable("variable_name","variable_value","User")
 ### Then, reopen the terminal
 ```
+
 **Environment variables (GUI)**
 
 You can set environment variable in GUI by following the following steps:
