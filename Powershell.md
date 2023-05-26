@@ -5,9 +5,17 @@
 
 `systeminfo` - get info about the computer's software and hardware.
 
+## Users
+
+```powershell
+Get-LocalUser #
+```
+
+## Environment variables
+
 **Environment variables (Powershell)**
 
-```py
+```powershell
 # List all environment variables
 Get-ChildItem Env:
 # Print a specific environment variable
