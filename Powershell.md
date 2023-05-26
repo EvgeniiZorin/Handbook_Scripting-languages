@@ -8,7 +8,10 @@
 ## Users
 
 ```powershell
-Get-LocalUser #
+### Print all users
+Get-LocalUser
+### Get all info for a specific user
+Get-LocalUser -Name "Data Science" | select *
 ```
 
 ## Environment variables
