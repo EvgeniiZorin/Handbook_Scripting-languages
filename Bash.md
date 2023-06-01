@@ -11,6 +11,7 @@
 - [Bash handbook](#bash-handbook)
 - [Contents](#contents)
 - [General info](#general-info)
+  - [Nano](#nano)
 - [Standard streams](#standard-streams)
 - [chmod](#chmod)
 - [Variables](#variables)
@@ -96,6 +97,18 @@ multiple lines
 | `top` | An older command. Shows processes that consume system resources. |
 | `htop` | A more modern version of `top`. Show every process currently ongoing. |
 | `nvtop` | A command to show the GPU status for the brands such as AMD, Intel, and Nvidia |
+
+## Nano
+
+Here are some useful hotkeys to use in Nano:
+| Shortcut | Action |
+| - | - |
+| `Alt+#` or `Alt+Shift+3` | Toggle line numbering on the left |
+| `Ctrl+A`, `Ctrl+E` | Move cursor to the start / end of the line |
+| `Alt+6`, `Ctrl+K`, `Ctrl+U` | Copy, cut, and paste selected text |
+| `Ctrl+6` | Cancel the current selection |
+| `Ctrl+K` | Cut entire line |
+| `Alt+U`, `Alt+E` | Undo / redo last action |
 
 # Standard streams
 
