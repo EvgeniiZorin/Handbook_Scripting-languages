@@ -586,9 +586,9 @@ curl -X 'GET' https://api-project1-efbh.onrender.com/random_quote
 ```
 
 Flags:
-- `X`: Allows you to specify the request type. In this case it is a POST request.
-- `d`: Stands for data and allows you to attach data to the request.
-- `H`: Stands for Headers and it allows you to pass additional information through the request. In this case it is used to the tell the server that the data is sent in a JSON format.
+- `-X`: Allows you to specify the request type. In this case it is a POST request.
+- `-d`: Stands for data and allows you to attach data to the request.
+- `-H`: Stands for Headers and it allows you to pass additional information through the request. In this case it is used to the tell the server that the data is sent in a JSON format.
 
 ## CUT
 - Print column 7  ```cut -f 7 input.txt``` 
