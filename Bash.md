@@ -102,14 +102,43 @@ multiple lines
 ## Nano
 
 Here are some useful hotkeys to use in Nano:
+
+**(Note: where applicable, `Alt+R` or `Esc+R` toggles REGEXP)**
+
+Edit lines
+| Shortcut | Action|
+| - | - |
+| `Alt+6`, `Ctrl+K`, `Ctrl+U` | Copy, cut, and paste selected text |
+| `Ctrl+K` | Delete current line |
+| `Ctrl+\` | Replace string with something else. |
+| `Alt+3` | Comment / uncomment the current line |
+
+Navigation
 | Shortcut | Action |
 | - | - |
-| `Alt+#` or `Alt+Shift+3` | Toggle line numbering on the left |
+| `Alt+▲`, `Alt+▼` | Scroll up / down one line without moving the cursor |
+| `Ctrl+_` | Go to line and column number ... |
+| `Ctrl+◀` and `Ctrl+▶` | Go backward / forward one word. |
+| `Ctrl+A` and `Ctrl+E` | Go to start / end of the current line. |
+| `Ctrl+P` and `Ctrl+N` | Go to previous / next line. |
+| `Ctrl+W` | Search forward for the first occurrence. |
+| `Ctrl+Q` | Search backwards for occurrence. You can navigate forward with `Alt+W` and backward with `Alt+Q`. |
 | `Ctrl+A`, `Ctrl+E` | Move cursor to the start / end of the line |
-| `Alt+6`, `Ctrl+K`, `Ctrl+U` | Copy, cut, and paste selected text |
-| `Ctrl+6` | Cancel the current selection |
-| `Ctrl+K` | Cut entire line |
-| `Alt+U`, `Alt+E` | Undo / redo last action |
+
+Time travel
+| Shortcut | Action |
+| - | - |
+| `Alt+U` | Undo |
+| `Alt+E` | Redo |
+
+Information / preferences
+| `Ctrl+G` | Display help text |
+| `Alt+X` | Enable / disable help mode |
+| `Alt+S` | Toggle soft wrapping of overlong lines |
+| `Alt+N`, `Alt+Shift+3` | Toggle line numbering on the left |
+| `Alt+P` | Toggle whitespace display |
+| `Ctrl+I` | Toggle auto indent |
+
 
 # Standard streams
 
