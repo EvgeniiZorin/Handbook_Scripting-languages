@@ -814,17 +814,21 @@ Replace SED flags:
 
 ## TMUX
 
+Tmux is a terminal multiplexer 
 Programa para dejar terminal abierto. 
 
+Tmux handles the processes as sessions. These sessions will continue running even if your connection to the terminal closes. 
 ```bash
 ### Create new session 
 tmux new -s <session_name>
 ### Check sessions
 tmux ls
+tmux list-sessions
 ### Then you can close terminal, to return to the terminal 
 tmux attach -t <session_name>
-### leave from session (minimise terminal) 
+### leave / detach from session (minimise terminal) 
 tmux detach
+# `ctrl + b`, then `d`
 ### Rename a session
 tmux rename-session [-t current-name] [new-name]
 ### Close the session (delete session) 
