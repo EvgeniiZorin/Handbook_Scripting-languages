@@ -41,6 +41,7 @@
   - [ECHO\_PRINTF](#echo_printf)
   - [FIND](#find)
   - [GREP](#grep)
+  - [HEAD](#head)
   - [LS](#ls)
   - [RANDOM](#random)
   - [RENAME](#rename)
@@ -48,6 +49,7 @@
   - [SED](#sed)
   - [SHUF](#shuf)
   - [SORT](#sort)
+  - [TAIL](#tail)
   - [TMUX](#tmux)
   - [TR](#tr)
   - [TREE](#tree)
@@ -703,6 +705,20 @@ grep 'dog[a-z]* | woof[a-z]*'
 cat conda-env1.yml | grep -vE "pywin32=305|vs2015_runtime|vc=14.2" > conda-env2.yml
 ```
 
+## HEAD
+
+General syntax: `head [option] [file]`
+
+**Options**:
+```bash
+# Print out first 10 lines
+-n 3
+# Exclude the last 3 lines
+-n -15
+# Print the first 10 characters
+-c 10
+```
+
 ## LS
 - Flags:
   - `-1`: one per line
@@ -814,6 +830,20 @@ Replace SED flags:
   - -V: sort alphanumerically - numbers, then letters
   - -r: reverse sort
   - -n: numerical sort (10, then 100)
+
+## TAIL
+
+General syntax: `tail [option] [file]`
+
+**Options**:
+```bash
+# Print out the last 3 lines
+-n 3
+# Print lines after a specific line
+-n +17
+# Print the last 10 characters
+-c 10
+```
 
 ## TMUX
 
