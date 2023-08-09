@@ -29,6 +29,7 @@
   - [CASE statements](#case-statements)
 - [Function definition](#function-definition)
 - [File handling](#file-handling)
+  - [Encoding](#encoding)
 - [Main functions](#main-functions)
   - [Running jobs](#running-jobs)
   - [Archives](#archives)
@@ -530,6 +531,15 @@ done
 Another function worth mentioning is opening online links:
 ```bash
 xdg-open <http://link_here>
+```
+
+## Encoding
+
+```bash
+# check file encoding
+file -bi file.txt
+# change file encoding
+iconv -f utf-16le -t UTF-8 file.txt -o file_proc.txt
 ```
 
 # Main functions
