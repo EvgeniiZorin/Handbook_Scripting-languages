@@ -599,16 +599,11 @@ Main types of archives: `.gz`, `.tar.gz`, `.zip`, `.7z`
 | - | - | - | - |
 | `.gz` | **Archive**. Archives only individual files, never a directory. Uses less memory / is fast for compression / decompression, but compresses less memory-wise. *Note: .gz and .gzip can both be used, but .gz is a much more conventional extension to use.* | `gzip example.fasta`, `gzip -k filename.txt` | `gunzip example.fasta.gz` |
 | `.tar` | **Container**. Utility `tar` containerises a folder. Usually, that container is then archived with `gzip` to get an archive `.tar.gz` | `tar -czvf example.tar.gz folder_name`, `tar -czvf example.tar.gz file1.txt file2.txt file3.txt` | `tar -xzvf example.tar.gz` |
+| `.tar.gz` | | | Extract a .tar.gz file with verbose ```tar -xvf archive.tar.gz``` |
 | `.zip` | **Archive**. Algorithm that is highly portable across OS's.  | Zip all files in the current directory: `zip archivename.zip *` <br> Zip all files in a specified directory: `zip example.zip folder_name/*` <br> Zip a directory: `zip -r output.zip inputDir` <br> Zip multiple files: `zip zipped.zip file1.txt file2.txt file3.txt` | `unzip example.zip` |
 | `.7z` | Compresses more space-wise, but uses more memory / runtime to compress / decompress. Install with `sudo apt-get install p7zip-full` | `7z a output.7z directory-or-file-to-archive` | |
 | `.tgz` | tar gzip | | `tar xzf housing.tgz` |
 
-
-
-- Zip (.zip) all files in the current dir ```zip archiveName *``` or ```zip archiveName *.tsv```
-- Zip (.zip) a directory ```zip -r output.zip inputdir```
-- Unzip ```gzip -d file``` or ```gunzip file```
-- Extract a .tar.gz file with verbose ```tar -xvf archive.tar.gz```
 
 ## CP
 - Copy multiple files to a dir ```cp {file1,file2,file3}.txt dir```
