@@ -102,6 +102,20 @@ multiple lines
 | `htop` | A more modern version of `top`. Show every process currently ongoing. |
 | `nvtop` | A command to show the GPU status for the brands such as AMD, Intel, and Nvidia |
 
+**Deleting files and directories**
+
+Flags:
+- `-d`: remove empty directory
+- `-r`: remove non-empty directory and its contents
+- `-f`: ignore any prompt when deleting a file
+
+```bash
+### Remove SILENTLY a non-empty folder with all its contents
+rm -rf dirname
+### Remove all contents of the folder (including all interior folders) but not the folder itself
+rm -rf /path/to/directory/*
+```
+
 ## Nano
 
 Here are some useful hotkeys to use in Nano:
