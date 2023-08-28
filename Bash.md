@@ -807,6 +807,9 @@ sed 's/pattern 1/replace 1/; s/pattern 2/replace 2/'
 sed -z 's/pattern 1/pattern 2/1' file.txt
 ### Replace 5th occurrence only
 sed -z 's/pattern 1/pattern 2/5' file.txt
+
+### Replace pattern ("equal" sign, then a sequence of any length of letters, numbers, or dots) with nothing
+cat file1.txt | sed -r 's/=[0-9.a-zA-Z]+//g' > file2.txt
 ```
 
 
