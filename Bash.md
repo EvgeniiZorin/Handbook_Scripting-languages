@@ -237,7 +237,6 @@ Environment variables:
 | Permanently set an env var | `nano ~/.bashrc`, then add the var value at the end: `export VAR_NAME="value"`, finally update the .bashrc file using the command: `source .bashrc` |
 
 
-
 ```bash
 # Assign variables:
 a="Hello"; b=22; c="${a}, I am ${b} years old!"; 
@@ -245,6 +244,7 @@ VAR1="Name"
 # Assign expression to a variable via subshell
 d=$(( b - 6 ))
 d=$(echo $VAR | sed 's/_/-/')
+var1=$(ls | wc -l)
 
 echo "$(echo ' M e ')."
 
@@ -263,6 +263,9 @@ declare -p VARNAME
 ```
 - Print number of variables passed `$#`    
 - Arithmetic operation (INT-based) with the variable: `b=$(( a + 100 ))`
+echo $(($var1 + 2)) # or
+echo $(($(ls | wc -l) - 2))
+
 - Give default value to a variable if a value not assigned: `VAR1="${1:-you}" `
 
 `${1,,}` - means consider variable as lowercase.
