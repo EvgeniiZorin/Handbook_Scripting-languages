@@ -100,7 +100,7 @@ multiple lines
 | `df -H` | Check available memory |
 | `top` | An older command. Shows processes that consume system resources. |
 | `htop` | A more modern version of `top`. Show every process currently ongoing. |
-| `nvtop` | A command to show the GPU status for the brands such as AMD, Intel, and Nvidia |
+| `nvtop`, `watch -n0.1 nvidia-smi` | A command to show the GPU status for the brands such as AMD, Intel, and Nvidia |
 
 **Deleting files and directories**
 
@@ -174,6 +174,23 @@ Output / input redirection
 | `>>` | Appends to a file if exists. |
 | `<` | Direct input from file on the right to the command on the left. |
 
+Examples:
+```bash
+### Redirect terminal output (stdout) to a file
+SomeCommand > SomeFile.txt  
+
+### Same but append
+SomeCommand >> SomeFile.txt
+
+### If you want stderr as well use this:
+SomeCommand &> SomeFile.txt  
+
+### or this to append:
+SomeCommand &>> SomeFile.txt  
+
+###if you want to have both stderr and output displayed on the console and in a file use this:
+SomeCommand 2>&1 | tee SomeFile.txt
+```
 
 
 **File management**:
