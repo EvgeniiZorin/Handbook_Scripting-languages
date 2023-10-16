@@ -5,6 +5,11 @@
 
 `systeminfo` - get info about the computer's software and hardware.
 
+By default, Powershell has running scripts disabled. To enable running scripts, open Powershell as Administrator and run the following command:
+```powershell
+Set-ExecutionPolicy RemoteSigned
+```
+
 ## Users
 
 ```powershell
