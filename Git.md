@@ -5,6 +5,7 @@ Git areas:
 - Local repository: area where commits are located. All changes to the project files that were added to the staging area will go to the local repository with the command `git commit`
 - Remote repository: area in a cloud repository, such as GitHub, Bitbucket, or GitLab. 
 
+<img src="git-areas.png">
 
 ```bash
 ### Check git credentials
