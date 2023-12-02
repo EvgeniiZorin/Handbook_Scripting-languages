@@ -546,6 +546,10 @@ func_result="$(my_function)"
 
 `mkdir -p nested1/nested2` - create a nested directory
 
+In the current directory, interactively delete files and directories: `rm -ir *`
+
+Copy files and nested directories from one path to another: `cp -r test-prospect-evgenii-zorin /home/jovyan/work/Evgenii`
+
 Let's say you have a `file.csv` file:
 ```csv
 name,surname
