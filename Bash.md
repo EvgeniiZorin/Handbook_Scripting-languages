@@ -840,6 +840,8 @@ sed 's/ //g' file.txt
 sed 's/\t/;/g' file.txt
 ### Replace multiple patterns
 sed 's/pattern 1/replace 1/; s/pattern 2/replace 2/'
+### Remove first 5 characters from each line
+sed 's/^.\{5\}//g'
 
 ### Replace 1st occurrence only
 sed -z 's/pattern 1/pattern 2/1' file.txt
