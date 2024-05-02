@@ -744,7 +744,7 @@ grep -E "string[a-z]" file.txt
 grep 'dog[a-z]* | woof[a-z]*'
 
 # Save to another file all lines from the original file that do not match the pattern
-cat conda-env1.yml | grep -vE "pywin32=305|vs2015_runtime|vc=14.2" > conda-env2.yml
+cat conda-env1.yml | grep -vE "pywin32|vs2015_runtime|- vc=" > conda-env2.yml
 ```
 
 ## HEAD
