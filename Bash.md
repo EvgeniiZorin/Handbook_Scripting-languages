@@ -42,7 +42,6 @@
   - [ECHO\_PRINTF](#echo_printf)
   - [FIND](#find)
   - [GREP](#grep)
-  - [HEAD](#head)
   - [LS](#ls)
   - [RANDOM](#random)
   - [RENAME](#rename)
@@ -67,6 +66,24 @@
 
 If you are working on WSL Ubuntu terminal, you could cd to the Desktop folder with the following command:
 ```cd /mnt/c/Users/evgen/Desktop```
+
+Print working directory (path): `pwd`
+
+View contents of a file:
+- With `HEAD`
+- `more <filename>`
+
+General syntax: `head [option] [file]`
+
+**Options**:
+```bash
+# Print out first 10 lines
+-n 3
+# Exclude the last 3 lines
+-n -15
+# Print the first 10 characters
+-c 10
+```
 
 - Change pw ```passwd```
 - Print current date ```date```
@@ -745,20 +762,6 @@ grep 'dog[a-z]* | woof[a-z]*'
 
 # Save to another file all lines from the original file that do not match the pattern
 cat conda-env1.yml | grep -vE "pywin32|vs2015_runtime|- vc=" > conda-env2.yml
-```
-
-## HEAD
-
-General syntax: `head [option] [file]`
-
-**Options**:
-```bash
-# Print out first 10 lines
--n 3
-# Exclude the last 3 lines
--n -15
-# Print the first 10 characters
--c 10
 ```
 
 ## LS
