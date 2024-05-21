@@ -12,8 +12,18 @@
 - [Contents](#contents)
 - [General info](#general-info)
   - [Nano](#nano)
+- [Navigation](#navigation)
+  - [pwd](#pwd)
+  - [view contents](#view-contents)
+  - [cd](#cd)
+  - [touch](#touch)
+  - [ls](#ls)
+  - [mkdir / rmdir / rm](#mkdir--rmdir--rm)
+  - [cp / mv](#cp--mv)
+  - [find](#find)
+  - [misc](#misc)
 - [Standard streams](#standard-streams)
-- [chmod](#chmod)
+- [Permissions](#permissions)
 - [Variables](#variables)
 - [Data Types](#data-types)
   - [String](#string)
@@ -27,29 +37,26 @@
   - [UNTIL](#until)
   - [FOR](#for)
   - [CASE statements](#case-statements)
+- [Expressions](#expressions)
 - [Function definition](#function-definition)
-- [File handling](#file-handling)
-  - [Encoding](#encoding)
-- [Main functions](#main-functions)
+- [Encoding](#encoding)
+- [Main commands](#main-commands)
   - [Running jobs](#running-jobs)
   - [AWK](#awk)
   - [CAT](#cat)
-  - [CD](#cd)
   - [Compression](#compression)
   - [CP](#cp)
   - [CURL](#curl)
   - [CUT](#cut)
   - [ECHO\_PRINTF](#echo_printf)
-  - [FIND](#find)
+  - [FIND](#find-1)
   - [GREP](#grep)
-  - [LS](#ls)
   - [RANDOM](#random)
   - [RENAME](#rename)
   - [SCREEN](#screen)
   - [SED](#sed)
   - [SHUF](#shuf)
   - [SORT](#sort)
-  - [TAIL](#tail)
   - [TMUX](#tmux)
   - [TR](#tr)
   - [TREE](#tree)
@@ -67,23 +74,9 @@
 If you are working on WSL Ubuntu terminal, you could cd to the Desktop folder with the following command:
 ```cd /mnt/c/Users/evgen/Desktop```
 
-Print working directory (path): `pwd`
 
-View contents of a file:
-- With `HEAD`
-- `more <filename>`
 
-General syntax: `head [option] [file]`
 
-**Options**:
-```bash
-# Print out first 10 lines
--n 3
-# Exclude the last 3 lines
--n -15
-# Print the first 10 characters
--c 10
-```
 
 - Change pw ```passwd```
 - Print current date ```date```
@@ -173,6 +166,139 @@ Information / preferences
 | `Alt+P` | Toggle whitespace display |
 | `Ctrl+I` | Toggle auto indent |
 
+# Navigation
+
+## pwd
+
+Print working directory (path): `pwd`
+
+## view contents
+
+View contents of a file:
+
+Option 1: With `HEAD`: `head [option] [file]`
+
+**Options**:
+```bash
+# Print out first 10 lines
+-n 3
+# Exclude the last 3 lines
+-n -15
+# Print the first 10 characters
+-c 10
+```
+
+Option 2: With `TAIL`
+
+General syntax: `tail [option] [file]`
+
+**Options**:
+```bash
+# Print out the last 3 lines
+-n 3
+# Print lines after a specific line
+-n +17
+# Print the last 10 characters
+-c 10
+```
+
+Option 3: `more <filename>`
+
+General syntax: `head [option] [file]`
+
+## cd 
+
+`cd` is the command to change directory. `cd` command can be used with relative and absolute paths:
+| Environment | Current directory | Path to cd | Resulting path |
+| - | - | - | - |
+| Local (Windows) | `c:/tmp` | Relative: `dir1` | `c:/tmp/dir1` |
+| Local (Windows) | `c:/tmp` | Relative: `dir1/dir2` | `c:/tmp/dir1/dir2` |
+| Local (Windows) | `c:/tmp` | Absolute: `c:/another/one` | `c:/another/one` |
+| Remote (Linux) | `/var` | Relative: `dir1` | `/var/dir1` |
+| Remote (Linux) | `/var` | Absolute: `/home/users` | `/home/users` |
+
+```bash
+cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
+
+cd . # stay at your current directory - so this does nothing
+cd .. # go back one level
+cd ../.. # go back two levels
+```
+
+## touch
+
+Create a file or a directory: `touch <file_or_directory>`
+
+## ls 
+
+`ls` - list contents of a directory. Flags:
+- `-1`: one per line
+- `-s`: sort by size
+- `-a`, `-all`: all files including hidden ones
+- `-t`: sorted by time
+- `-l`: list of extended information, including permissions
+- `-h`: human-readable
+
+## mkdir / rmdir / rm
+
+`mkdir -p nested1/nested2` - create a nested directory
+
+In the current directory, interactively delete files and directories: `rm -ir *`
+
+
+
+## cp / mv
+
+```bash
+# Copy a file to a target directory:
+cp file.jpg target-directory
+# Move a file
+mv file.jpg target-directory
+# move file to the previous directory
+mv file.jpg ..
+```
+
+Copy files and nested directories from one path to another: `cp -r test-prospect-evgenii-zorin /home/jovyan/work/Evgenii`
+
+```bash
+# rename a file
+mv <filename> <new_filename>
+```
+
+## find
+
+```bash
+# print tree of a specified folder or root folder
+find
+find folderName
+find dir1/dir2
+# find a specific file
+find -name index.html
+```
+
+## misc
+
+Let's say you have a `file.csv` file:
+```csv
+name,surname
+John,Doe
+Jane,Doe
+Chris,Evans
+```
+
+Iterate row-by-row, printing one column only
+```bash
+cat file.csv | while IFS="," read NAME SURNAME
+do
+  echo SURNAME
+done
+```
+
+Another function worth mentioning is opening online links:
+```bash
+xdg-open <http://link_here>
+```
+
 
 # Standard streams
 
@@ -215,13 +341,18 @@ SomeCommand 2>&1 | tee SomeFile.txt
 - Move several files to a dir ```mv file1.txt file2.txt dirname```
 - Delete dir with files ```rm -r``` or ask before delete ```rm -ri```
 
-# chmod
+# Permissions
 
 We can check permission by running `ls -l` in a directory. Each file / directory will have 10 lines associated with permissions:
 - 1st character: type of entry. `-` for file, `d` for directory
 - 2-4 show user permissions
 - 5-7 show group permissions
 - 8-10 show other permissions
+
+Example: `-rw-r--r--`
+- `r`: read
+- `w`: write
+- `x`: execute
 
 The chmod command operates on the WHO-WHAT-WHICH principle:
 - WHO: Who we are setting permissions for.
@@ -275,6 +406,7 @@ Environment variables:
 # Assign variables:
 a="Hello"; b=22; c="${a}, I am ${b} years old!"; 
 VAR1="Name"
+echo $VAR1
 # Assign expression to a variable via subshell
 d=$(( b - 6 ))
 d=$(echo $VAR | sed 's/_/-/')
@@ -415,12 +547,28 @@ Example:
 
 # Conditional statements and loops
 
+> Note: you can get a manual on how to use these by running `help if`, for instance
+
 ## IF
 
 ```bash
 # Version 1 (use $ sign to denote variables):
 if [[ condition ]]; then STATEMENT; fi
+# or
+if [[ CONDITION ]]
+then
+  STATEMENTS
+fi
+
 if [[ condition ]]; then STATEMENT1; elif [[ condition2 ]]; then STATEMENT2; else STATEMENT3; fi
+# or
+if [[ CONDITION ]]
+then
+  STATEMENTS
+else
+  STATEMENTS
+fi
+
 # Version 2 (don't use $ sign to denote variables):
 if (( condition )); 
 ```
@@ -447,6 +595,26 @@ Examples:
 if [ $a -eq 0 ]; then echo "a"; else echo "b"; fi
 if [ $1 == "Johnny" ]; then echo "a"; else echo "$1"; fi
 if [ ${1,,} == "johnny" ]; then echo "yes"; else echo "no"; fi
+
+
+NUMBER=$(( RANDOM % 75 + 1 ))
+TEXT="The next number is, "
+if (( NUMBER <= 15 ))
+then
+        echo $TEXT B:$NUMBER
+elif [[ $NUMBER -le 30 ]]
+then
+        echo $TEXT I:$NUMBER
+elif (( NUMBER < 46 ))
+then
+        echo $TEXT N:$NUMBER
+elif [[ $NUMBER -lt 61 ]]
+then
+        echo $TEXT G:$NUMBER
+else
+        echo $TEXT O:$NUMBER
+fi
+
 ```
 
 Check if directory exists: `if [ -d "Dirname" ]; then echo "Exists!"; fi`   
@@ -467,7 +635,14 @@ while : ; do echo "Press <CTRL+C> to exit."; sleep 1; done
 x=1; while [ $x -le 5 ]; do echo "Welcome $x times"; x=$(( $x + 1 )); done
 ```
 
-
+```bash
+I=$1
+while [[ $I -ge 0 ]]
+do
+        echo $I
+        (( I-- ))
+done
+```
 
 ## UNTIL
 
@@ -482,6 +657,7 @@ This loop is needed to iterate for some kind of values.
 Var 1
 ```bash
 for ((i=1; i<=10; i++)); do echo "a"; done
+for ((i=10; i>0; i--)); do echo "a"; done
 ```
 Var2
 ```bash
@@ -532,6 +708,22 @@ esac
   
 ```
 
+# Expressions
+
+Check expressions: `help test`
+
+```bash
+# check if the file exists
+[[ -a filename.ext ]]
+```
+
+`&&` - AND
+`||` - OR
+
+`((...))` - will perform a calculation or operation and output nothing. 
+
+Use output of an expression: `echo $(( I * 2 + 4 ))`
+
 # Function definition
 
 Here is an example:    
@@ -559,36 +751,7 @@ my_function () {
 func_result="$(my_function)"
 ```
 
-# File handling
-
-`mkdir -p nested1/nested2` - create a nested directory
-
-In the current directory, interactively delete files and directories: `rm -ir *`
-
-Copy files and nested directories from one path to another: `cp -r test-prospect-evgenii-zorin /home/jovyan/work/Evgenii`
-
-Let's say you have a `file.csv` file:
-```csv
-name,surname
-John,Doe
-Jane,Doe
-Chris,Evans
-```
-
-Iterate row-by-row, printing one column only
-```bash
-cat file.csv | while IFS="," read NAME SURNAME
-do
-  echo SURNAME
-done
-```
-
-Another function worth mentioning is opening online links:
-```bash
-xdg-open <http://link_here>
-```
-
-## Encoding
+# Encoding
 
 ```bash
 # check file encoding
@@ -597,7 +760,13 @@ file -bi file.txt
 iconv -f utf-16le -t UTF-8 file.txt -o file_proc.txt
 ```
 
-# Main functions
+# Main commands
+
+Get all commands: `help`
+
+`<command> --help`
+
+`man <command>`
 
 ## Running jobs
 - Run a job in the background ```sleep 50 &```
@@ -629,22 +798,6 @@ AWK is a powerful text-processing tool in Bash scripting that allows for pattern
 ## CAT
 - Concatenate several files into one ```cat file1 file2 > file3```
 - Concatenate all .tsv files in the current dir into one ```cat *.tsv >> output.tsv```
-
-## CD
-
-`cd` command can be used with relative and absolute paths:
-| Environment | Current directory | Path to cd | Resulting path |
-| - | - | - | - |
-| Local (Windows) | `c:/tmp` | Relative: `dir1` | `c:/tmp/dir1` |
-| Local (Windows) | `c:/tmp` | Relative: `dir1/dir2` | `c:/tmp/dir1/dir2` |
-| Local (Windows) | `c:/tmp` | Absolute: `c:/another/one` | `c:/another/one` |
-| Remote (Linux) | `/var` | Relative: `dir1` | `/var/dir1` |
-| Remote (Linux) | `/var` | Absolute: `/home/users` | `/home/users` |
-
-
-```bash
-cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
-```
 
 ## Compression
 
@@ -688,6 +841,7 @@ Flags:
 ## ECHO_PRINTF
 
 ```bash
+echo Hello World
 echo "Hello, world!"
 
 # Print multiple lines
@@ -704,6 +858,7 @@ Flags for ECHO:
 | `-e` | Interpret newlines, e.g. `echo -e "\ntext\n"` |
 | `-n` | Do not output the trailing newline. |
 | `for i in {1..75}; do echo -n "-"; done` | Print header line in Linux |
+
 
 PRINTF: echo but without newline. 
 
@@ -763,15 +918,6 @@ grep 'dog[a-z]* | woof[a-z]*'
 # Save to another file all lines from the original file that do not match the pattern
 cat conda-env1.yml | grep -vE "pywin32|vs2015_runtime|- vc=" > conda-env2.yml
 ```
-
-## LS
-- Flags:
-  - `-1`: one per line
-  - `-s`: sort by size
-  - `-a`: all files including hidden ones
-  - `-t`: sorted by time
-  - `-l`: list of extended information, including permissions
-  - `-h`: human-readable
 
 ## RANDOM
 
@@ -880,20 +1026,6 @@ Replace SED flags:
   - -V: sort alphanumerically - numbers, then letters
   - -r: reverse sort
   - -n: numerical sort (10, then 100)
-
-## TAIL
-
-General syntax: `tail [option] [file]`
-
-**Options**:
-```bash
-# Print out the last 3 lines
--n 3
-# Print lines after a specific line
--n +17
-# Print the last 10 characters
--c 10
-```
 
 ## TMUX
 
@@ -1041,7 +1173,9 @@ Flags:
 
 # BASH scripting
 
-Put a shebang at the top of the shell script: `#!/bin/bash`
+Show location of bash: `which bash`
+
+Put a shebang at the top of the shell script: `#!<path_to_interpreter>`. Can look like this in the end: `#!/bin/bash`
 
 Print all arguments passed to the scriplt `$*`
 
