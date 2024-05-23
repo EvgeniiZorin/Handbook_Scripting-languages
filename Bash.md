@@ -37,7 +37,7 @@
   - [UNTIL](#until)
   - [FOR](#for)
   - [CASE statements](#case-statements)
-- [Expressions](#expressions)
+- [Expressions / statements / conditions](#expressions--statements--conditions)
 - [Function definition](#function-definition)
 - [Encoding](#encoding)
 - [Main commands](#main-commands)
@@ -74,7 +74,9 @@
 If you are working on WSL Ubuntu terminal, you could cd to the Desktop folder with the following command:
 ```cd /mnt/c/Users/evgen/Desktop```
 
-
+Exit status:
+- 0: true
+- 1: false
 
 
 
@@ -477,7 +479,9 @@ echo ${arr1[0]}
 
 # Print the whole array
 echo ${arr1[@]} # or...
-echo ${arr1[*]}
+echo ${arr1[*]} # or ...
+N=5
+echo ${arr1[$N]}
 ```
 
 ## Int and float
@@ -542,7 +546,7 @@ Example:
 - Check if variable var1 ends with "?": `[[ $var1 =~ \?$ ]]`
 - Is a string a number? `[[ a =~ [0-9] ]]`
 - Does the string NOT consist of any number of numbers from start to end? `[[ ! 11 =~ ^[0-9]+$ ]]; echo $?`
-
+= Ends with a question mark? `[[ $VAR =~ \?$ ]]; echo $?`
 
 
 # Conditional statements and loops
@@ -551,8 +555,9 @@ Example:
 
 ## IF
 
+
+
 ```bash
-# Version 1 (use $ sign to denote variables):
 if [[ condition ]]; then STATEMENT; fi
 # or
 if [[ CONDITION ]]
@@ -569,26 +574,9 @@ else
   STATEMENTS
 fi
 
-# Version 2 (don't use $ sign to denote variables):
-if (( condition )); 
 ```
 
-| Operator | Description |
-| :--- | :--- |
-| `-gt` | Greater than **(arithmetic operators)** |
-| `-ge` | Greater or equal to |
-| `-eq` | Equal to |
-| `-ne` | Not equal to |
-| `-le` | Less or equal to |
-| `-lt` | Less than |
-| `==` | Check if two strings are the same **(string operators)** |
-| `!=` | Check if two strings are NOT the same |
-| `-z` | True if length of the string is zero; `[[ -z $VAR ]]` |
-| `-n` | True if length of the string is non-zero |
-| `-d` | Check the existence of a directory **(file operators)** |
-| `-e` | Check the existence of a file |
-| `&&` | AND **(Comparison operators)** |
-| `||` | OR |
+
 
 Examples:
 ```bash
@@ -616,6 +604,8 @@ else
 fi
 
 ```
+
+
 
 Check if directory exists: `if [ -d "Dirname" ]; then echo "Exists!"; fi`   
 Create directory if it does not exist: `if [ ! -d "Dirname" ]; then mkdir Dirname; fi`   
@@ -708,9 +698,42 @@ esac
   
 ```
 
-# Expressions
+# Expressions / statements / conditions
 
 Check expressions: `help test`
+
+| Operator | Description |
+| :--- | :--- |
+| `-gt` | Greater than **(arithmetic operators)** |
+| `-ge` | Greater or equal to |
+| `-eq` | Equal to |
+| `-ne` | Not equal to |
+| `-le` | Less or equal to |
+| `-lt` | Less than |
+| `==` | Check if two strings are the same **(string operators)** |
+| `!=` | Check if two strings are NOT the same |
+| `=~` | Check if contains a pattern. `[[ hello =~ el ]]; echo $?` - returns 0 / true | 
+| `-z` | True if length of the string is zero; `[[ -z $VAR ]]` |
+| `-n` | True if length of the string is non-zero |
+| `-d` | Check the existence of a directory **(file operators)** |
+| `-e` | Check the existence of a file |
+| `&&` | AND **(Comparison operators)** |
+| `||` | OR |
+
+```bash
+# Version 1 (use $ sign to denote variables):
+help [[ expression ]]
+[[ CONDITION ]];
+# check in the terminal
+[[ hello == hello ]]; echo $?
+
+# Version 2 (don't use $ sign to denote variables):
+(( CONDITION ));
+```
+
+(( NUMBER <= 15 ))
+
+[[ $NUMBER -le 15 ]]
 
 ```bash
 # check if the file exists
@@ -725,6 +748,8 @@ Check expressions: `help test`
 Use output of an expression: `echo $(( I * 2 + 4 ))`
 
 # Function definition
+
+`help function`
 
 Here is an example:    
 ```bash
