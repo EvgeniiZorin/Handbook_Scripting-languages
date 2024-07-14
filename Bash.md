@@ -10,18 +10,16 @@
 # Contents
 - [Bash handbook](#bash-handbook)
 - [Contents](#contents)
-- [General info](#general-info)
+- [Basic commands and infor](#basic-commands-and-infor)
   - [Nano](#nano)
 - [Navigation](#navigation)
   - [pwd](#pwd)
-  - [view contents](#view-contents)
   - [cd](#cd)
-  - [touch](#touch)
+  - [Directory manipulation](#directory-manipulation)
   - [ls](#ls)
-  - [mkdir / rmdir / rm](#mkdir--rmdir--rm)
-  - [cp / mv](#cp--mv)
   - [find](#find)
   - [misc](#misc)
+  - [pushd / popd](#pushd--popd)
 - [Standard streams](#standard-streams)
 - [Permissions](#permissions)
 - [Variables](#variables)
@@ -37,39 +35,43 @@
   - [UNTIL](#until)
   - [FOR](#for)
   - [CASE statements](#case-statements)
-- [Expressions / statements / conditions](#expressions--statements--conditions)
+- [Operators](#operators)
 - [Function definition](#function-definition)
 - [Encoding](#encoding)
 - [Main commands](#main-commands)
   - [Running jobs](#running-jobs)
-  - [AWK](#awk)
-  - [CAT](#cat)
+  - [Processing data and pipelines](#processing-data-and-pipelines)
+    - [Pipes](#pipes)
+    - [AWK](#awk)
+    - [CAT](#cat)
+    - [CUT](#cut)
+    - [SED](#sed)
+    - [SORT](#sort)
+    - [UNIQ](#uniq)
+    - [HEAD, TAIL](#head-tail)
   - [Compression](#compression)
   - [CP](#cp)
   - [CURL](#curl)
-  - [CUT](#cut)
   - [ECHO\_PRINTF](#echo_printf)
   - [FIND](#find-1)
   - [GREP](#grep)
   - [RANDOM](#random)
   - [RENAME](#rename)
   - [SCREEN](#screen)
-  - [SED](#sed)
   - [SHUF](#shuf)
-  - [SORT](#sort)
   - [TMUX](#tmux)
   - [TR](#tr)
   - [TREE](#tree)
-  - [UNIQ](#uniq)
   - [WC](#wc)
   - [WGET](#wget)
   - [XARGS](#xargs)
+  - [CRON](#cron)
 - [Workload managers](#workload-managers)
 - [Bioinformatics commands](#bioinformatics-commands)
 - [BASH scripting](#bash-scripting)
 
 
-# General info
+# Basic commands and infor
 
 If you are working on WSL Ubuntu terminal, you could cd to the Desktop folder with the following command:
 ```cd /mnt/c/Users/evgen/Desktop```
@@ -78,8 +80,9 @@ Exit status:
 - 0: true
 - 1: false
 
+**Flags** in linux are command modifiers used to modify the behaviour of command-line utilities. Flags are represented by a hyphen (-) followed by a letter. 
 
-
+Examples of some commands: `pwd`, `cd`, `ls`, `etc`:
 - Change pw ```passwd```
 - Print current date ```date```
 - Check the server's load ```top``` or ```htop```
@@ -170,43 +173,13 @@ Information / preferences
 
 # Navigation
 
+There are two methods for accessing directory paths: 
+- Absolute path: specify the location of a file / directory from the root directory; always start with a forward slash. E.g. `/home/user/data/file.txt`
+- Relative path: specify the location of a file / directory relative to the current directory. E.g. `cd data`
+
 ## pwd
 
 Print working directory (path): `pwd`
-
-## view contents
-
-View contents of a file:
-
-Option 1: With `HEAD`: `head [option] [file]`
-
-**Options**:
-```bash
-# Print out first 10 lines
--n 3
-# Exclude the last 3 lines
--n -15
-# Print the first 10 characters
--c 10
-```
-
-Option 2: With `TAIL`
-
-General syntax: `tail [option] [file]`
-
-**Options**:
-```bash
-# Print out the last 3 lines
--n 3
-# Print lines after a specific line
--n +17
-# Print the last 10 characters
--c 10
-```
-
-Option 3: `more <filename>`
-
-General syntax: `head [option] [file]`
 
 ## cd 
 
@@ -220,6 +193,8 @@ General syntax: `head [option] [file]`
 | Remote (Linux) | `/var` | Absolute: `/home/users` | `/home/users` |
 
 ```bash
+cd # without any arguments, it will take you back to your home directory
+
 cd /mnt/c/Users/your-username-here/Desktop # In WSL, make Desktop your workdir
 
 cd . # stay at your current directory - so this does nothing
@@ -227,9 +202,43 @@ cd .. # go back one level
 cd ../.. # go back two levels
 ```
 
-## touch
 
-Create a file or a directory: `touch <file_or_directory>`
+## Directory manipulation
+
+```bash
+# `touch` - create a file or a directory: 
+`touch <file_or_directory>`
+
+# `mkdir` - create a directory:
+# Create a nested directory
+mkdir -p nested1/nested2`
+
+# `rm` - remove a file or directory:
+`rm file.py`
+# Delete a directory and its files
+rm -r directory_with_files
+# In the current directory, interactively delete files and directories
+rm -ir *
+
+# `rmdir` - remove an empty directory:
+rmdir empty_directory
+
+# `mv` - moving and renaming files or directories
+# Rename a file
+mv oldname.txt newname.txt
+# Move a file
+mv file.jpg target_directory
+# move file to the previous directory
+mv file.jpg ..
+
+
+# Copy a file to a target directory:
+cp file.jpg target-directory
+# Copy files and nested directories from one path to another
+cp -r test-prospect-evgenii-zorin /home/jovyan/work/Evgenii
+
+```
+
 
 ## ls 
 
@@ -241,41 +250,19 @@ Create a file or a directory: `touch <file_or_directory>`
 - `-l`: list of extended information, including permissions
 - `-h`: human-readable
 
-## mkdir / rmdir / rm
-
-`mkdir -p nested1/nested2` - create a nested directory
-
-In the current directory, interactively delete files and directories: `rm -ir *`
-
-
-
-## cp / mv
-
-```bash
-# Copy a file to a target directory:
-cp file.jpg target-directory
-# Move a file
-mv file.jpg target-directory
-# move file to the previous directory
-mv file.jpg ..
-```
-
-Copy files and nested directories from one path to another: `cp -r test-prospect-evgenii-zorin /home/jovyan/work/Evgenii`
-
-```bash
-# rename a file
-mv <filename> <new_filename>
-```
-
 ## find
+
+This command searches for a specified file.
 
 ```bash
 # print tree of a specified folder or root folder
 find
 find folderName
 find dir1/dir2
-# find a specific file
+# find a specific file in the current directory and its subdirectories
 find -name index.html
+# ... in the specified directory and its subdirectories
+find path/here filename.html
 ```
 
 ## misc
@@ -300,6 +287,9 @@ Another function worth mentioning is opening online links:
 ```bash
 xdg-open <http://link_here>
 ```
+
+## pushd / popd
+
 
 
 # Standard streams
@@ -407,8 +397,10 @@ Environment variables:
 ```bash
 # Assign variables:
 a="Hello"; b=22; c="${a}, I am ${b} years old!"; 
+
 VAR1="Name"
 echo $VAR1
+
 # Assign expression to a variable via subshell
 d=$(( b - 6 ))
 d=$(echo $VAR | sed 's/_/-/')
@@ -551,6 +543,8 @@ Example:
 
 # Conditional statements and loops
 
+`[ condition ]` and `[[ condition ]]` are interchangeable. 
+
 > Note: you can get a manual on how to use these by running `help if`, for instance
 
 ## IF
@@ -652,6 +646,8 @@ for ((i=10; i>0; i--)); do echo "a"; done
 Var2
 ```bash
 for i in {START..STOP..STEP}; do echo $i; done
+# Example
+for i in {1..5}; do echo $i; done
 ```
 
 Print the same character N times: 
@@ -698,7 +694,7 @@ esac
   
 ```
 
-# Expressions / statements / conditions
+# Operators
 
 Check expressions: `help test`
 
@@ -751,19 +747,24 @@ Use output of an expression: `echo $(( I * 2 + 4 ))`
 
 `help function`
 
-Here is an example:    
 ```bash
+# Defining a function
+# Method 1
 function functName {
   echo "Hello world!"
 }
-```
-or
-```bash
-functname() {
- echo "Hello $1"
+# Method 2
+functName() {
+ echo "Hello world!"
 }
- 
-functName "Joe"
+# Calling this function
+functName
+
+# Functions can also use positional arguments
+functName() {
+  echo "Hello, $1 $2"
+}
+functName "John" "Wayne"
 ```
 
 Here's how to return the output of the function:
@@ -771,10 +772,13 @@ Here's how to return the output of the function:
 my_function () {
   local func_result="some result"
   echo "$func_result"
+  # can also use `return`
 }
 
 func_result="$(my_function)"
 ```
+
+
 
 # Encoding
 
@@ -800,7 +804,16 @@ Get all commands: `help`
 
 <hr />
 
-## AWK
+## Processing data and pipelines
+
+### Pipes
+
+```bash
+# Display unique lines in a file
+cat filename | sort | uniq
+```
+
+### AWK
 
 AWK is a powerful text-processing tool in Bash scripting that allows for pattern scanning and processing data.
 
@@ -820,157 +833,25 @@ AWK is a powerful text-processing tool in Bash scripting that allows for pattern
 - Rearrange the order of columns in a file ```awk 'BEGIN {FS=OFS="\t"} {print $3, $1, $5}' newfile.txt >newfile_proc.txt```
 - Print column 1, replacing all colons by semicolons ```awk 'BEGIN{FS=OFS="\t"} {gsub(/\:/, ";", $1)} 1' file.txt``` or ```awk -F "\t" '{gsub(/\:/,";",$1);print $1"\t"$2"\t"$3}' file.txt```
 
-## CAT
+
+### CAT
+
+Concatenates and displays the content of files.
+
 - Concatenate several files into one ```cat file1 file2 > file3```
 - Concatenate all .tsv files in the current dir into one ```cat *.tsv >> output.tsv```
 
-## Compression
+### CUT
 
-Main types of archives: `.gz`, `.tar.gz`, `.zip`, `.7z`
+Removes sections from lines of files.
 
-| Compression algorithm model | Description | Pack | Unpack |
-| - | - | - | - |
-| `.gz` | **Archive**. Archives only individual files, never a directory. Uses less memory / is fast for compression / decompression, but compresses less memory-wise. *Note: .gz and .gzip can both be used, but .gz is a much more conventional extension to use.* | `gzip example.fasta`, `gzip -k filename.txt` | `gunzip example.fasta.gz` |
-| `.tar` | **Container**. Utility `tar` containerises a folder. Usually, that container is then archived with `gzip` to get an archive `.tar.gz` | `tar -czvf example.tar.gz folder_name`, `tar -czvf example.tar.gz file1.txt file2.txt file3.txt` | `tar -xzvf example.tar.gz` |
-| `.tar.gz` | | | Extract a .tar.gz file with verbose ```tar -xvf archive.tar.gz``` |
-| `.zip` | **Archive**. Algorithm that is highly portable across OS's.  | Zip all files in the current directory: `zip archivename.zip *` <br> Zip all files in a specified directory: `zip example.zip folder_name/*` <br> Zip a directory: `zip -r output.zip inputDir` <br> Zip multiple files: `zip zipped.zip file1.txt file2.txt file3.txt` | `unzip example.zip` |
-| `.7z` | Compresses more space-wise, but uses more memory / runtime to compress / decompress. Install with `sudo apt-get install p7zip-full` | `7z a output.7z directory-or-file-to-archive` | |
-| `.tgz` | tar gzip | | `tar xzf housing.tgz` |
-
-
-## CP
-- Copy multiple files to a dir ```cp {file1,file2,file3}.txt dir```
-
-Copy a directory to the parent directory: ```cp -r dirname ..```
-
-- Flags:
-  - -v: with verbose
-
-## CURL
-
-```bash
-# GET request
-curl -X 'GET' https://api-project1-efbh.onrender.com/random_quote
-```
-
-Flags:
-- `-X`: Allows you to specify the request type. In this case it is a POST request.
-- `-d`: Stands for data and allows you to attach data to the request.
-- `-H`: Stands for Headers and it allows you to pass additional information through the request. In this case it is used to the tell the server that the data is sent in a JSON format.
-
-## CUT
 - Print column 7  ```cut -f 7 input.txt``` 
 - Print columns 1, 2  ```cut -f 1,2 input.txt``` or ```cut -f 1-2 input.txt``` 
 - Print column 3 and up  ```cut -f 3- input.txt```
 
-## ECHO_PRINTF
+### SED
 
-```bash
-echo Hello World
-echo "Hello, world!"
-
-# Print multiple lines
-echo "asdf
-asdf"
-
-# Use a variable
-echo "Home current user is: $HOME"
-```
-
-Flags for ECHO:   
-| Flag | Action |
-| :--- | :--- |
-| `-e` | Interpret newlines, e.g. `echo -e "\ntext\n"` |
-| `-n` | Do not output the trailing newline. |
-| `for i in {1..75}; do echo -n "-"; done` | Print header line in Linux |
-
-
-PRINTF: echo but without newline. 
-
-## FIND
-
-`Find` command is used to search directories for files. 
-
-`find` - view the file tree from the current directory. 
-
-| Flag | Function |
-| --- | --- |
-| `-name` | Search for the specific file / directory, e.g. `find -name index.html` |
-
-Some examples of use:
-```bash
-### Remove all zero-byte files from the filesystem
-!find /tmp/data/ -size 0 -exec rm {} +
-### removes any file that does not have a .jpg extension
-!find /tmp/data/ -type f ! -name "*.jpg" -exec rm {} +
-```
-
-## GREP
-
-Flags:
-
-| Flag | Meaning |
-| - | - |
-| `-i`      | ignore case |
-| `-c`      | print line count |
-| `-v`      | lines that don't contain ... |
-| `-n`      | specified line number in which the query was found |
-| `-nC`     |  1: prints 1 line before and after the matching line |
-| `-r`      | recursive search, case-sensitive |
-| `-E`      | **allows to use extended regexp** |
-| `-o`      | matches more than once per each line |
-| `--color` | color matches within lines |
-
-Command: `grep "<pattern>" <file>`
-
-Examples: 
-```bash
-
-# Print lines with 'h' at the start of the line 
-grep "^h" file.txt
-
-# Print lines containing one of the specified substring
-grep -iE "string1|string2" 
-# Print lines containing one letter within A-Z 
-grep -w "[A-Z]" input.txt
-# Print lines containing one letter within A-Z at start of line 
-grep "^[A-Z]" input.txt
-# Print lines containing string with a letter at the end 
-grep -E "string[a-z]" file.txt
-# Search words that start with dog or woof
-grep 'dog[a-z]* | woof[a-z]*'
-
-# Save to another file all lines from the original file that do not match the pattern
-cat conda-env1.yml | grep -vE "pywin32|vs2015_runtime|- vc=" > conda-env2.yml
-```
-
-## RANDOM
-
-Internal BASH function (or a BASH environment variable), returns a pseudorandom integer in the range 0 - 32767.
-
-`echo $(( RANDOM % 4 ))` # Generate a random integer from 0 to 3 inclusive. 
-`echo $(( RANDOM % 4 + 1 ))` # Genearte a random integer from 1 to 3 inclusive
-
-`N=$(( RANDOM % 4 ))` 
-
-## RENAME
-- Flags: 
-  - -n: check which actions will be taken without taking them (mock)
-  - -v: verbose
-- Rename a file ```rename 's/oldname/newname/' file```
-- Change extension in all .txt files ```rename 's/.txt$/.csv/' *.txt``` or same but deliberately escaping special symbols ```rename -n 's/\.txt$/\.csv/' *.txt
-- Replace all spaces with underscores in all .txt files (with a global modifier) ```rename 's/ /_/g' *.txt```
-- In .txt files, change name ```rename 's/my_file/file/' *.txt```
-
-## SCREEN
-- Create a parallel session ```screen```
-- Exit a screen ```ctrl + A```, then ```D```
-- Show screens ```screen -ls```
-- Go to screen ```screen -r```
-- Name a screen ```screen -S name```
-- Kill ```screen -X -S [session # you want to kill] kill```
-
-## SED
+Performs find-and-replace operations, substitutions, deletions, and more on text files or input streams. 
 
 A stream editor for bash. Can be used either with a file (`sed <command> <file>`) or from a printed text (`cat <file> | sed <command>`)
 
@@ -1040,10 +921,10 @@ Replace SED flags:
 - `-r`: use extended regexp, such as "+"
 
 
-## SHUF
-- Get N random lines `shuf -n N input >output`
+### SORT
 
-## SORT
+Sorts lines in text files.
+
 - Randomly shuffle 10 non-repeating sample items ```shuf -n 10 input.txt``` or ```sort --random-sort input.txt```
 - Sort by col3, then by col4 ```sort -k3 -k4 file.txt```
 - Flags for ```sort```:
@@ -1051,6 +932,213 @@ Replace SED flags:
   - -V: sort alphanumerically - numbers, then letters
   - -r: reverse sort
   - -n: numerical sort (10, then 100)
+  - -t: choose a delimiter
+
+Read data starting from the second row (removing header row) and sorting by the third column in the file:
+```bash
+tail -n +2 filename.csv | sort -t, -k3,3n > sorted_filename.csv
+```
+
+### UNIQ
+
+Removes duplicate lines from a sorted file.
+
+- Remove replciates from sorted data, leaving only unique values ```uniq```
+- Flags:
+  - -c: with counts
+  - -u: only unique lines
+  - -d: only duplicates
+
+### HEAD, TAIL
+
+View contents of a file:
+
+Option 1: With `HEAD`: `head [option] [file]`
+
+**Options**:
+```bash
+# Print out first 10 lines
+-n 3
+# Exclude the last 3 lines
+-n -15
+# Print the first 10 characters
+-c 10
+```
+
+Option 2: With `TAIL`
+
+General syntax: `tail [option] [file]`
+
+**Options**:
+```bash
+# Print out the last 3 lines
+-n 3
+# Print lines after a specific line
+-n +17
+# Print the last 10 characters
+-c 10
+```
+
+Option 3: `more <filename>`
+
+General syntax: `head [option] [file]`
+
+
+## Compression
+
+Main types of archives: `.gz`, `.tar.gz`, `.zip`, `.7z`
+
+| Compression algorithm model | Description | Pack | Unpack |
+| - | - | - | - |
+| `.gz` | **Archive**. Archives only individual files, never a directory. Uses less memory / is fast for compression / decompression, but compresses less memory-wise. *Note: .gz and .gzip can both be used, but .gz is a much more conventional extension to use.* | `gzip example.fasta`, `gzip -k filename.txt` | `gunzip example.fasta.gz` |
+| `.tar` | **Container**. Utility `tar` containerises a folder. Usually, that container is then archived with `gzip` to get an archive `.tar.gz` | `tar -czvf example.tar.gz folder_name`, `tar -czvf example.tar.gz file1.txt file2.txt file3.txt` | `tar -xzvf example.tar.gz` |
+| `.tar.gz` | | | Extract a .tar.gz file with verbose ```tar -xvf archive.tar.gz``` |
+| `.zip` | **Archive**. Algorithm that is highly portable across OS's.  | Zip all files in the current directory: `zip archivename.zip *` <br> Zip all files in a specified directory: `zip example.zip folder_name/*` <br> Zip a directory: `zip -r output.zip inputDir` <br> Zip multiple files: `zip zipped.zip file1.txt file2.txt file3.txt` | `unzip example.zip` |
+| `.7z` | Compresses more space-wise, but uses more memory / runtime to compress / decompress. Install with `sudo apt-get install p7zip-full` | `7z a output.7z directory-or-file-to-archive` | |
+| `.tgz` | tar gzip | | `tar xzf housing.tgz` |
+
+
+## CP
+- Copy multiple files to a dir ```cp {file1,file2,file3}.txt dir```
+
+Copy a directory to the parent directory: ```cp -r dirname ..```
+
+- Flags:
+  - -v: with verbose
+
+## CURL
+
+```bash
+# GET request
+curl -X 'GET' https://api-project1-efbh.onrender.com/random_quote
+```
+
+Flags:
+- `-X`: Allows you to specify the request type. In this case it is a POST request.
+- `-d`: Stands for data and allows you to attach data to the request.
+- `-H`: Stands for Headers and it allows you to pass additional information through the request. In this case it is used to the tell the server that the data is sent in a JSON format.
+
+## ECHO_PRINTF
+
+```bash
+echo Hello World
+echo "Hello, world!"
+
+# Print multiple lines
+echo "asdf
+asdf"
+
+# Use a variable
+echo "Home current user is: $HOME"
+
+# Use an output of a function
+a="file.txt"
+echo "The file $a has $(wc -l < $a) lines"
+```
+
+Flags for ECHO:   
+| Flag | Action |
+| :--- | :--- |
+| `-e` | Interpret newlines, e.g. `echo -e "\ntext\n"` |
+| `-n` | Do not output the trailing newline. |
+| `for i in {1..75}; do echo -n "-"; done` | Print header line in Linux |
+
+
+PRINTF: echo but without newline. 
+
+## FIND
+
+`Find` command is used to search directories for files. 
+
+`find` - view the file tree from the current directory. 
+
+| Flag | Function |
+| --- | --- |
+| `-name` | Search for the specific file / directory, e.g. `find -name index.html` |
+
+Some examples of use:
+```bash
+### Remove all zero-byte files from the filesystem
+!find /tmp/data/ -size 0 -exec rm {} +
+### removes any file that does not have a .jpg extension
+!find /tmp/data/ -type f ! -name "*.jpg" -exec rm {} +
+```
+
+## GREP
+
+Flags:
+
+| Flag | Meaning |
+| - | - |
+| `-i`      | ignore case |
+| `-c`      | print line count |
+| `-v`      | lines that don't contain ... |
+| `-n`      | specified line number in which the query was found |
+| `-nC`     |  1: prints 1 line before and after the matching line |
+| `-r`      | recursive search (e.g. in a directory), case-sensitive |
+| `-E`      | **allows to use extended regexp** |
+| `-o`      | matches more than once per each line |
+| `--color` | color matches within lines |
+
+Command: `grep "<pattern>" <file>`
+
+Examples: 
+```bash
+
+# Print lines with 'h' at the start of the line 
+grep "^h" file.txt
+
+# Print lines containing one of the specified substring
+grep -iE "string1|string2" 
+# Print lines containing one letter within A-Z 
+grep -w "[A-Z]" input.txt
+# Print lines containing one letter within A-Z at start of line 
+grep "^[A-Z]" input.txt
+# Print lines containing string with a letter at the end 
+grep -E "string[a-z]" file.txt
+# Search words that start with dog or woof
+grep 'dog[a-z]* | woof[a-z]*'
+
+# Search for a string in each file in a directory
+grep -r 'string1' directory1
+# Search for a string in the current directory
+grep -r 'string1' .
+
+# Save to another file all lines from the original file that do not match the pattern
+cat conda-env1.yml | grep -vE "pywin32|vs2015_runtime|- vc=" > conda-env2.yml
+```
+
+## RANDOM
+
+Internal BASH function (or a BASH environment variable), returns a pseudorandom integer in the range 0 - 32767.
+
+`echo $(( RANDOM % 4 ))` # Generate a random integer from 0 to 3 inclusive. 
+`echo $(( RANDOM % 4 + 1 ))` # Genearte a random integer from 1 to 3 inclusive
+
+`N=$(( RANDOM % 4 ))` 
+
+## RENAME
+- Flags: 
+  - -n: check which actions will be taken without taking them (mock)
+  - -v: verbose
+- Rename a file ```rename 's/oldname/newname/' file```
+- Change extension in all .txt files ```rename 's/.txt$/.csv/' *.txt``` or same but deliberately escaping special symbols ```rename -n 's/\.txt$/\.csv/' *.txt
+- Replace all spaces with underscores in all .txt files (with a global modifier) ```rename 's/ /_/g' *.txt```
+- In .txt files, change name ```rename 's/my_file/file/' *.txt```
+
+## SCREEN
+- Create a parallel session ```screen```
+- Exit a screen ```ctrl + A```, then ```D```
+- Show screens ```screen -ls```
+- Go to screen ```screen -r```
+- Name a screen ```screen -S name```
+- Kill ```screen -X -S [session # you want to kill] kill```
+
+
+
+
+## SHUF
+- Get N random lines `shuf -n N input >output`
 
 ## TMUX
 
@@ -1149,14 +1237,6 @@ tree -d
   --            Options processing terminator.
 ```
 
-
-## UNIQ
-- Remove replciates from sorted data, leaving only unique values ```uniq```
-- Flags:
-  - -c: with counts
-  - -u: only unique lines
-  - -d: only duplicates
-
 ## WC
 - Flags:
   - -l: number of lines
@@ -1165,6 +1245,12 @@ tree -d
   - -m: number of characters
   - -L: prints only length of the longest line
   - -X: print number of lines, words, byte count
+
+```bash
+### How many lines does a file have?
+wc -l file.txt
+wc -l < file.txt # returns only the number
+```
 
 ## WGET
 
@@ -1179,6 +1265,48 @@ Flags:
 ## XARGS
 - Use output of file.txt as args in function 'rm' ```cat file.txt | xargs rm```
 - ```find . -size +1M | xargs ls -lh```
+
+## CRON
+
+Allows scheduling tasks (cron jobs) to run automatically at specific times / days. 
+
+```bash
+# View your current cron jobs
+crontab -l
+# Edit your cron jobs
+crontab -e
+```
+
+A cron job is defined by a line in the crontab file, which consists of six fields:
+```txt
+* * * * * command to be executed
+- - - - -
+| | | | |
+| | | | +----- day of the week (0 - 6) (Sunday=0)
+| | | +------- month (1 - 12)
+| | +--------- day of the month (1 - 31)
+| +----------- hour (0 - 23)
++------------- min (0 - 59)
+```
+
+Each field can be an asterisk (which means any value), a single value, a range of values, or a list of values or ranges separated by commas.
+
+Here’s an example of a cron job that runs a script every day at 2:30 PM:
+`30 14 * * * /home/user/data_script.sh`
+
+This line specifies that the `data_script.sh` script, located in `/home/user/`, should run at minute 30 of hour 14 (2:30 PM) every day.
+
+By default, the output from a cron job is mailed to the owner of the crontab file. However, you can redirect the output to a file:
+`30 14 * * * /home/user/data_script.sh > /home/user/data_log.txt`
+
+In this example, the output of `data_script.sh` is redirected to `data_log.txt`.
+
+Example: 
+
+You have a Python script called data_update.py that updates your data every week. The script is located in the /home/data_scientist/ directory. How would you schedule a cron job to run this script every Monday at 1:30 AM?
+
+Answer: run `crontab -e`, then `30 1 * * 1 /usr/bin/python3 /home/data_scientist/data_update.py`
+
 
 
 # Workload managers
@@ -1200,7 +1328,19 @@ Flags:
 
 Show location of bash: `which bash`
 
-Put a shebang at the top of the shell script: `#!<path_to_interpreter>`. Can look like this in the end: `#!/bin/bash`
+Each bash script should start with a shebang: `#!<path_to_interpreter>`. Shebang tells how to execute the following script, with what shell
+- Normally / most oftenly, it looks like this: `#!/bin/bash`. It means that the current script should be executed using Bash shell; however, by including this shebang, you make sure that the script is run using the correct shell, regardless of the system's default shell;
+
+Example of an elementary Bash script - `script.sh`:
+```bash
+#!/bin/bash
+# This is a comment
+echo "Hello, world!"
+```
+
+Bash script can be run by two commands:
+- Using the `bash` command: `bash script.sh`
+- Script can be made directly executable by `chmod +x script.sh`, then can be run like: `./script.sh`
 
 Print all arguments passed to the scriplt `$*`
 
