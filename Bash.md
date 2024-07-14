@@ -82,6 +82,8 @@ Exit status:
 
 **Flags** in linux are command modifiers used to modify the behaviour of command-line utilities. Flags are represented by a hyphen (-) followed by a letter. 
 
+Commands like echo etc. are located in `/usr/bin`.
+
 Examples of some commands: `pwd`, `cd`, `ls`, `etc`:
 - Change pw ```passwd```
 - Print current date ```date```
@@ -1275,19 +1277,48 @@ Allows scheduling tasks (cron jobs) to run automatically at specific times / day
 crontab -l
 # Edit your cron jobs
 crontab -e
+# Run crontab for a different user
+crontab -u root -l  # or
+sudo crontab -u root -l
 ```
 
-A cron job is defined by a line in the crontab file, which consists of six fields:
+A cron job is defined by a line in the crontab file, which consists of six fields. Here's an example of a crontab file:
 ```txt
-* * * * * command to be executed
-- - - - -
-| | | | |
-| | | | +----- day of the week (0 - 6) (Sunday=0)
-| | | +------- month (1 - 12)
-| | +--------- day of the month (1 - 31)
-| +----------- hour (0 - 23)
-+------------- min (0 - 59)
+# .---------------- minute (0-59)
+# | .-------------- hour (0-23)
+# | | .------------ day of month (1-31)
+# | | | .---------- month (1-12) OR jan, feb, mar, apr
+# | | | | .-------- day of week (0-6, where 0=Sunday, 1=Monday, etc.) OR sun, mon, tue, wed, thu, fri, sat
+# | | | | |
+# * * * * * command to be executed
+
+# Run this command every minute of every day
+* * * * * echo 'Hello' >> /tmp/test.txt
+* * * * * date >> /path/to/test.txt
+
+# Run every 30 min of every hour, e.g. 11:30, 12:30, 13:30, etc.
+30 * * * * echo 'Hello' >> /tmp/test.txt
+
+# Run every day at 5:30
+30 5 * * * command
+
+# Run on the first of every month at 5:30
+30 5 1 * * command
+
+# Run on the first month (January) first day of the month (1st) at 5:30
+30 5 1 1 * command
+
+# Every monday at midnight
+0 0 * * 1 command
+
+# At 11:03 every day of the month, every month, every day of the week, run this command
+# 03 11 * * * echo "this is a test" > /full/path/to/file.txt
+
+# A cronjob that runs every hour
+# @daily, @weekly, @monthly
+@hourly /usr/bin/echo "this is a test" >> /full/path/test.txt
 ```
+
 
 Each field can be an asterisk (which means any value), a single value, a range of values, or a list of values or ranges separated by commas.
 
