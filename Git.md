@@ -121,10 +121,18 @@ Git workflow for a Data Scientist - **Feature Branch Workflow**:
 
 Other operations:
 ```bash
-# Show branches
+# Show all branches
 git branch -a
+# Show your current branch
+git branch
+# Show only the name of the branch
+git rev-parse --abbrev-ref HEAD
+
 # Delete a branch
 git branch -d branchName
+
+# Switch to an existing branch
+git checkout <branch_name>
 # Create and switch to a new branch; this step should combine two steps - create a branch and switch to it
 git checkout -b branch-name
 ```
