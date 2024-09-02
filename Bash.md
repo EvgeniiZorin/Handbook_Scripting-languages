@@ -11,6 +11,7 @@
 - [Bash handbook](#bash-handbook)
 - [Contents](#contents)
 - [Basic commands and infor](#basic-commands-and-infor)
+  - [Processes](#processes)
   - [Nano](#nano)
 - [Navigation](#navigation)
   - [pwd](#pwd)
@@ -115,8 +116,6 @@ multiple lines
 | `<cmd> --help`, `man <cmd>`, `help <cmd>`, `whatis pwd` | Get help for a command `<cmd>` |
 | `du -h file.txt`, `du -hc directory` | Check size of file or directory |
 | `df -H` | Check available memory |
-| `top` | An older command. Shows processes that consume system resources. |
-| `htop` | A more modern version of `top`. Show every process currently ongoing. |
 | `nvtop`, `watch -n0.1 nvidia-smi` | A command to show the GPU status for the brands such as AMD, Intel, and Nvidia |
 
 **Deleting files and directories**
@@ -132,6 +131,12 @@ rm -rf dirname
 ### Remove all contents of the folder (including all interior folders) but not the folder itself
 rm -rf /path/to/directory/*
 ```
+
+## Processes
+
+`top`: an older command. Shows processes that consume system resources.
+
+`htop`: a more modern version of `top`. Show every process currently ongoing. 
 
 ## Nano
 
